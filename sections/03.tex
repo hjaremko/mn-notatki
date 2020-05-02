@@ -88,4 +88,42 @@ gdzie $e_i$ to wektor z bazy $\mathbb{R}^n$.
     $$e^{(u,u_1,\ldots, u_m)} = \ldots$$
 \end{tcolorbox}
 
+\subsection{Metoda akumulacji wstecz}
+\pagebreak
+
+\subsection{Automatyczne różniczkowanie z wykorzystaniem szeregu Taylora}
+\begin{tcolorbox}
+\[
+f_k = \frac{f^{(k)}(x_0)}{k!}
+\]
+\[
+\vec{f} = (f_0, f_1, f_2, \ldots)
+\]
+% \[
+% \vec{f}(\vec{x}) = \left(f(x), \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \ldots \right)
+% % = (g(u), u'g'(u), u''g'(u) + (u')^2 g''(u), \ldots)
+% \]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Arytmetyka}
+    $$(f + g)_k  = f_k + g_k$$
+    $$(f - g)_k  = f_k - g_k$$
+    $$(f \cdot g)_k  = \sum_{i=0}^{k} f_i \cdot g_{k-i}$$
+    $$\left(\frac{f}{g}\right)_k  = \frac{1}{g_0} \cdot \left( f_k - \sum_{i=0}^{k-1} \frac{f}{g}_{i} \cdot g_{k-i} \right)$$
+    $$(\sin g)_k = \frac{1}{k} \cdot \sum_{i=1}^{k} i \cdot g_i \cdot (\cos g)_{k-1}$$
+    $$(\cos g)_k = -\frac{1}{k} \cdot \sum_{i=1}^{k} i \cdot g_i \cdot (\sin g)_{k-1}$$
+    $$
+    (e^g)_k =
+    \begin{cases}
+    e^{g_0}, ~~~~~~ k = 0\\
+    \frac{1}{k} \cdot \sum_{i=1}^{k} i \cdot g_i \cdot \left(e_g\right)_{k-1},~~~~~~ k >0
+    \end{cases}
+    $$
+    $$
+    (g^a)_k =  \frac{1}{g_0} \cdot \left( \sum_{i=1}^{k} \frac{a\cdot i}{k}g_i \cdot (g^a)_{k-i}- \sum_{i=1}^{k-1} \frac{i}{k} (g^a)_i \cdot g_{k-i}\right)
+    $$
+\end{tcolorbox}
+
+\pagebreak
 \end{document}
