@@ -1,0 +1,9 @@
+*.pdf
+*.out
+_minted*
+*.swp
+*.log
+*.aux
+out
+*.gz
+*.toc

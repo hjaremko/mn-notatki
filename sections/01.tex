@@ -1,0 +1,148 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\newcommand{\fl}{\text{fl}}
+
+\begin{document}
+
+\section{Analiza błędów}
+
+\subsection{Oznaczenia}
+
+\begin{tcolorbox}
+\textbf{Błąd bezwzględny} - wartość przybliżona minus wartość dokładana
+\[
+\Delta x = \hat{x} - x
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Błąd względny} - $\frac{\text{błąd}}{\text{wartość dokładna}}$
+\[
+\varepsilon_x = \frac{\Delta x}{x}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Epsilon maszynowy} - dla danej arytemtyki
+\[
+\varepsilon_{masz} = 2^{-(D+1)}
+\]
+$D$ - liczba bitów używanych przez daną arytmetykę zmiennoprzecinkową do
+reprezentacji mantysy (dla \texttt{double} $52$).
+
+Epsilon maszynowy jest największą liczbą reprezentowalną taką, że
+\[
+\fl(1 + \varepsilon) = 1
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Arytmetyka zmiennoprzecinkowa}\\
+Istnieje liczba $\varepsilon$ taka, że $|\varepsilon| < \varepsilon_{masz}$ oraz
+\[
+\fl(a \star b) = (a \star b)(1 + \varepsilon)
+\]
+\end{tcolorbox}
+
+
+\subsection{Uwarunkowanie zadania}
+
+\begin{tcolorbox}
+\textbf{Oszacowanie na błąd wyniku}\\
+\[
+\Delta y = D \varphi(x) \Delta x
+\]
+$D \varphi(x)$ - macierz Jacobiego odwzorowania $\varphi$
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Błąd względny wyniku}\\
+\[
+\varepsilon_{y_i} = \sum_{j=1}^{n} \frac{\partial \varphi_i(x)}{\partial x_j}
+\cdot \frac{x_j}{\varphi_i(x)} \varepsilon_{x_j}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Współczynniki uwarunkowania}\\
+\[
+k_{ij} = \frac{\partial \varphi_i(x)}{\partial x_j} \cdot \frac{x_j}{\varphi_i(x)}
+\]
+% \begin{itemize}
+    % \item
+    Określa jaki wpływ na błąd wyniku $y_i$ ma błąd $x_j$.\\
+    % \item
+     Jeżeli \textbf{wartość bezwzgledna} któregokolwiek współczynnika
+uwarunkowania jest duża to zadanie jest \textbf{źle uwarunkowane}.
+% \end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Wskaźniki uwarunkowania}\\
+Liczbę $c$ nazywamy wskaźnikiem uwarunkowania zadania
+\textit{(względem norm $||\cdot||_{\mathbb{R}^n}, ||\cdot||_{\mathbb{R}^m}$)}
+jeżeli \textit{(dla $\varphi(x) \neq 0, x \neq 0$)}
+\[
+\underbrace{\frac{||\varphi(\hat{x}) - \varphi(x)||_{\mathbb{R}^m}}{||\varphi(x)||_{\mathbb{R}^m}}}_{\text{błąd względny wyniku}}
+\leqslant
+c \underbrace{\frac{||\hat{x} - x||_{\mathbb{R}^n}}{||x||_{\mathbb{R}^n}}}_{\text{błąd względny wejścia}}
+\]
+
+Dla układu równań
+$Ax = b :
+c = || A^ {−1}|| \cdot ||A||$
+\end{tcolorbox}
+
+\subsection{Algorytm numerycznie stabilny}
+
+\begin{tcolorbox}
+\textbf{Algorytm}\\
+Ciąg $A = (\varphi_0, \varphi_1, \ldots, \varphi_n)$ nazywamy algorytmem i definiujemy
+\[
+A(x) = \varphi_k \circ \ldots \circ \varphi_1 \circ \varphi_0(x)
+\]
+Algorytm $A$ jest algorytmem obliczania wartości $\varphi(x)$ jeżeli
+$\varphi(x) = A(x)$.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Współczynniki wzmocnienia}\\
+Jeżeli wpływ błędu zaogrągleń $\varepsilon_i$ na ostateczny błąd obliczeń
+wynosi $r_i \varepsilon_i$ to liczbę $r_i$ nazywamy współczynnikiem wzmocnienia
+dla $\varepsilon_i$.
+\end{tcolorbox}
+
+
+\begin{tcolorbox}
+\textbf{Błąd nieunikniony}\\
+\[
+\Delta^0y = \left(|D\varphi|\cdot|x| + |y| \right)\varepsilon_{masz}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Błąd nieszkodliwy}\\
+Błąd zaogrągleń $\varepsilon_i$ nazywamy nieszkodliwym jeżeli jego wpływ na
+całkowity błąd obliczeń jest co najwyżej na poziomie \textbf{błędu nieuniknionego}.\\
+\[
+\Delta^0y = \left(|D\varphi|\cdot|x| + |y| \right)\varepsilon_{masz}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Algorytm numerycznie stabilny}\\
+Gdy wszystkie jego błędy zaogrągleń są nieszkodliwe.
+\[
+\text{dla każdego~} |k_{ij}|\leqslant \Delta^0y
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Algorytm numerycznie użyteczny}\\
+Algorytm $A_1$ jest numerycznie użyteczniejszy od algorytmu $A_2$, jeżeli dla
+każdych dnaych wejściowych całkowity wpływ błędów zaokrągleń jest mniejszy
+w algorytmie $A_1$.
+\end{tcolorbox}
+
+\end{document}
