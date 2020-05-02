@@ -1,0 +1,91 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Automatyczne różniczkowanie}
+
+\subsection{Metoda propagacji w przód}
+
+
+\subsubsection{Funkcja jednej zmiennej}
+\begin{tcolorbox}
+\[
+\vec{x} = (x, 1, 0, \ldots) ~~~~~~~~ \vec{c} = (c, 0, 0, \ldots)
+\]
+\[
+\vec{u} = (u, u', u'', \ldots)
+\]
+\[
+\vec{g}(\vec{u}) = (u, u', u'', \ldots)
+= (g(u), u'g'(u), u''g'(u) + (u')^2 g''(u), \ldots)
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Operacje na dżetach postaci $(u, u')$}
+    $$(u,u') + (v,v') = (u + v, u' + v')$$
+    $$(u,u') - (v,v') = (u - v, u' - v')$$
+    $$(u,u') \cdot (v,v') = (u \cdot v, u \cdot v' + u' \cdot v)$$
+    $$\frac{(u,u')}{(v,v')} = \left(\frac{u}{v}, \frac{u' - \frac{u}{v}\cdot v'}{v}\right)$$
+    $$\sin(u,u') = (\sin u, \cos u \cdot u')$$
+    $$\cos(u,u') = (\cos u, -\sin u \cdot u')$$
+    $$e^{(u,u')} = (e^u, u' \cdot e^u)$$
+    $$\ln(u,u') = \left(\ln u, \frac{u'}{u}\right)$$
+\end{tcolorbox}
+
+\subsubsection{Pochodne kierunkowe}
+\begin{tcolorbox}
+\[
+f: \mathbb{R}^n \rightarrow \mathbb{R}, x, u \in \mathbb{R}^n:
+g(t) = f(x + t \cdot u)
+\]
+\[
+g'(t) = u \cdot f(t \cdot u + x) \Rightarrow g'(0) = u \cdot f(x)
+\]
+\[
+x = ((x_1, 0), (x_2, 0), \ldots, (x_n, 0))
+\]
+\[
+u = ((u_1, 0), (u_2, 0), \ldots, (u_n, 0))
+\]
+\[
+t = (0,1)
+\]
+\end{tcolorbox}
+Redukujemy problem obliczenia $\nabla_u f(x)$ do obliczenia pochodnej funkcji
+jednej zmiennej.
+% Poniważ chcemy policzyć pochodną w punkcie $t = 0$, zmienna $t$ zostanie
+% zastąpiona parą $(0,1)$, natomiast $x = ((x_1, 0), (x_2, 0), \ldots, (x_n, 0))$,
+% $u = ((u_1, 0), (u_2, 0), \ldots, (u_n, 0))$.
+
+\subsubsection{Gradient}
+Aby obliczyć pochodne cząstkowe funkcji $f$ wystarczy obliczyć
+$\nabla_{e_i}f(x)$,
+% ($i = 1, \ldots, n$),
+gdzie $e_i$ to wektor z bazy $\mathbb{R}^n$.
+
+\begin{tcolorbox}
+\[
+\vec{x} = (x, 1, 0, 0, \ldots) ~~~~~~~~ \vec{y} = (y, 0, 1, 0, \ldots) ~~~~~~~~ \vec{c} = (c, 0, 0, 0, \ldots)
+\]
+% \[
+% \vec{u} = (u, u', u'', \ldots)
+% \]
+\[
+\vec{f}(\vec{x}) = \left(f(x), \frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \ldots \right)
+% = (g(u), u'g'(u), u''g'(u) + (u')^2 g''(u), \ldots)
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Operacje na dżetach $m+1$ wymiarowych wektorów}
+    $$(u,u_1,\ldots, u_m) + (v,v_1,\ldots, v_m) = (u + v, u_1 + v_1, \ldots, u_m + v_m)$$
+    $$(u,u_1,\ldots, u_m) - (v,v_1,\ldots, v_m) = (u - v, u_1 - v_1, \ldots, u_m - v_m)$$
+    $$(u,u_1,\ldots, u_m) \cdot (v,v_1,\ldots, v_m) = (u \cdot v, u \cdot v_1 + u_1 \cdot v, \ldots, u \cdot v_m + u_m \cdot v)$$
+    $$\frac{(u,u_1,\ldots, u_m)}{(v,v_1,\ldots, v_m)} = \left(\frac{u}{v}, \frac{u_1 - \frac{u}{v}\cdot v_1}{v}, \ldots, \frac{u_m - \frac{u}{v}\cdot v_m}{v}\right)$$
+    $$\sin(u,u_1,\ldots, u_m) = \text{zostawiam jako ćwiczenie dla czytelnika}$$
+    $$\cos(u,u_1,\ldots, u_m) = \ldots$$
+    $$e^{(u,u_1,\ldots, u_m)} = \ldots$$
+\end{tcolorbox}
+
+\end{document}
