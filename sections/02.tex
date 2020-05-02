@@ -1,0 +1,126 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Metody iteracyjne rozwiązywania równań nieliniowych}
+
+\subsection{Metoda bisekcji}
+
+\begin{tcolorbox}
+\textbf{Założenia}
+\begin{itemize}
+    \item $f$ - jest funkcją ciągłą na przedziale $[a,b]$
+    \item $f(a)f(b) < 0$\\
+\end{itemize}
+
+\textbf{$k$-ty krok algorytmu}
+\[
+c_k = \frac{a_k + b_k}{2}
+\]
+\begin{gather*}
+f(a_k)f(c_k) > 0 : (a_{k+1}, b_{k+1}) = (c_k, b_k)\\
+f(b_k)f(c_k) > 0 : (a_{k+1}, b_{k+1}) = (a_k, c_k)
+\end{gather*}
+% Jeżeli $f(c_k) = 0$ to kończymy obliczenia.
+\textbf{Kończymy obliczenia jeżeli:}
+\begin{itemize}
+    \item Osiągnięto dokładność $\delta: |e_n| < \delta$
+    \item Wartość funkcji jest bliska $0$: $f(c_n) < \varepsilon$
+    \item Wykonano $M$ iteracji \textit{(potrzebne gdy poprzednie zawiodą)}\\
+\end{itemize}
+\[
+\Delta x = |x_k - x| \leqslant \frac{|b - a|}{2^k}
+\]
+
+Niezawodna, ale wolno zbieżna.
+\end{tcolorbox}
+
+\subsection{Regula falsi}
+
+\begin{tcolorbox}
+\textbf{Założenia}
+\begin{itemize}
+    \item $f$ - jest funkcją ciągłą na przedziale $[a,b]$
+    \item $f(a)f(b) < 0$\\
+\end{itemize}
+
+\textbf{$k$-ty krok algorytmu}
+\[
+x_k = a_k - \frac{f(a_k)}{f(b_k) - f(a_k)}(b_k - a_k)
+\]
+\begin{gather*}
+% f(x_k) = 0 \Longrightarrow \text{koniec}\\
+f(x_k) < \varepsilon_{max} : \text{koniec}\\
+f(x_k)f(a_k) < 0 : (a_{k+1}, b_{k+1}) = (a_k, x_k)\\
+f(x_k)f(a_k) > 0 : (a_{k+1}, b_{k+1}) = (x_k, b_k)
+\end{gather*}
+
+\end{tcolorbox}
+
+\subsection{Metoda siecznych}
+
+\begin{tcolorbox}
+\textbf{Założenia}
+\begin{itemize}
+    \item $f$ - jest funkcją ciągłą na przedziale $[a,b]$
+    \item Rezygnujemy z założenia, że funkcja na końcach przedziału ma rózne znaki\\
+\end{itemize}
+
+\textbf{$k$-ty krok algorytmu}
+\[
+x_{k+1} = x_k - \frac{f(x_k)(x_k - x_{k-1})}{f(x_k) - f(x_{k-1})}
+\]
+Modyfikacja regula falsi, może być rozbieżna. Jeśli $x_n, x_{n+1}$ są już
+dobrymi przybliżeniami pierwiastka to mamy zdecydowanie szybszą zbieżność ciągu
+iteracji.
+\end{tcolorbox}
+
+\subsection{Metoda Newtona \textit{(stycznych)}}
+
+\begin{tcolorbox}
+\textbf{Założenia}
+\begin{itemize}
+    \item $f$ - jest funkcją ciągłą na przedziale $[a,b]$
+\end{itemize}
+
+\textbf{$n$-ty krok algorytmu}
+\[
+x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
+\]
+\end{tcolorbox}
+
+
+\subsection{Metoda Newtona dla funkcji wielu zmiennych}
+
+\begin{tcolorbox}
+\textbf{Założenia}
+\[
+f = (f_1, f_2, \ldots, f_n) : \mathbb{R}^n \rightarrow \mathbb{R}^n
+% \text{jest różniczkowalną funkcją wielu zmiennych}
+\]
+
+\textbf{$i$-ty krok algorytmu}
+\[
+x_{i+1} = x_i - \left[ D f(x_i) \right]^{-1} f(x_i)
+\]
+
+\textbf{NIE NALEŻY} odwracać macierzy Jacobiego!!!
+Zamiast tego obliczamy układ równań:
+\[
+D f(x_i) (x_{i+1} - x_i) = -f(x_i)
+\]
+\end{tcolorbox}
+
+Metoda zbieżna lokalnie. Oznacza to, że
+punkt początkowy powinien zostać wybrany jako już dobre przybliżenie
+szukanego miejsca zerowego.
+
+\subsection{Krokowość metody}
+\begin{tcolorbox}
+Jeśli metoda jest  $n$-krokowa,
+oznacza to, że do wyznaczenia kolejnego punktu iteracji potrzebne jest $n$
+poprzednich punktów oraz wartości badanej funkcji w tych punktach.
+\end{tcolorbox}
+
+\pagebreak
+\end{document}

@@ -1,7 +1,5 @@
 \documentclass[../mn-notatki.tex]{subfiles}
 
-\newcommand{\fl}{\text{fl}}
-
 \begin{document}
 
 \section{Analiza błędów}
@@ -86,7 +84,8 @@ jeżeli \textit{(dla $\varphi(x) \neq 0, x \neq 0$)}
 \[
 \underbrace{\frac{||\varphi(\hat{x}) - \varphi(x)||_{\mathbb{R}^m}}{||\varphi(x)||_{\mathbb{R}^m}}}_{\text{błąd względny wyniku}}
 \leqslant
-c \underbrace{\frac{||\hat{x} - x||_{\mathbb{R}^n}}{||x||_{\mathbb{R}^n}}}_{\text{błąd względny wejścia}}
+c  \cdot
+\underbrace{\frac{||\hat{x} - x||_{\mathbb{R}^n}}{||x||_{\mathbb{R}^n}}}_{\text{błąd względny wejścia}}
 \]
 
 Dla układu równań
@@ -111,6 +110,19 @@ $\varphi(x) = A(x)$.
 Jeżeli wpływ błędu zaogrągleń $\varepsilon_i$ na ostateczny błąd obliczeń
 wynosi $r_i \varepsilon_i$ to liczbę $r_i$ nazywamy współczynnikiem wzmocnienia
 dla $\varepsilon_i$.
+\[
+f(c + h) =
+f(c) +
+\frac{f'(c)}{1!} h +
+\frac{f'(c)}{2!} h^2
+\]
+\[
+f(\underbrace{x}_{c} + \underbrace{k_1 \varepsilon_1 + k_2 \varepsilon_2}_h) =
+f(x) +
+\frac{f'(x)}{1!} k_1 \varepsilon_1 +
+\frac{f'(x)}{1!} k_2 \varepsilon_2 +
+\underbrace{\ldots}_{\text{zaniedbujemy}} \varepsilon_1 \varepsilon_2
+\]
 \end{tcolorbox}
 
 
@@ -145,4 +157,5 @@ każdych dnaych wejściowych całkowity wpływ błędów zaokrągleń jest mniej
 w algorytmie $A_1$.
 \end{tcolorbox}
 
+\pagebreak
 \end{document}
