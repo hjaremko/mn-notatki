@@ -9,7 +9,7 @@
 \begin{tcolorbox}
 \textbf{Błąd bezwzględny} - wartość przybliżona minus wartość dokładana
 \[
-\Delta x = \hat{x} - x
+\Delta x = \bar{x} - x
 \]
 \end{tcolorbox}
 
@@ -82,15 +82,15 @@ Liczbę $c$ nazywamy wskaźnikiem uwarunkowania zadania
 \textit{(względem norm $||\cdot||_{\mathbb{R}^n}, ||\cdot||_{\mathbb{R}^m}$)}
 jeżeli \textit{(dla $\varphi(x) \neq 0, x \neq 0$)}
 \[
-\underbrace{\frac{||\varphi(\hat{x}) - \varphi(x)||_{\mathbb{R}^m}}{||\varphi(x)||_{\mathbb{R}^m}}}_{\text{błąd względny wyniku}}
+\underbrace{\frac{||\varphi(\bar{x}) - \varphi(x)||_{\mathbb{R}^m}}{||\varphi(x)||_{\mathbb{R}^m}}}_{\text{błąd względny wyniku}}
 \leqslant
 c  \cdot
-\underbrace{\frac{||\hat{x} - x||_{\mathbb{R}^n}}{||x||_{\mathbb{R}^n}}}_{\text{błąd względny wejścia}}
+\underbrace{\frac{||\bar{x} - x||_{\mathbb{R}^n}}{||x||_{\mathbb{R}^n}}}_{\text{błąd względny wejścia}}
 \]
 
 Dla układu równań
 $Ax = b :
-c = || A^ {−1}|| \cdot ||A||$
+c = || A^{−1}|| \cdot ||A||$
 \end{tcolorbox}
 
 \subsection{Algorytm numerycznie stabilny}

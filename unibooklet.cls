@@ -11,8 +11,13 @@
 \newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
-\LoadClass[a5paper,6pt]{article}
-\RequirePackage{polski}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\PassOptionsToClass{a5paper, oneside}{article}
+\ProcessOptions\relax
+\LoadClass{article}
+
+% \RequirePackage{polski}
+\RequirePackage[polish]{babel}
 \RequirePackage{tcolorbox}
 \RequirePackage{geometry}
 %\RequirePackage{color}
@@ -24,6 +29,8 @@
 \RequirePackage{fontawesome}
 \RequirePackage{newpxmath}
 \RequirePackage{graphicx}
+\RequirePackage[TS1,T1]{fontenc}
+\RequirePackage{microtype}
 
 \graphicspath{{images/}{../images/}}
 
