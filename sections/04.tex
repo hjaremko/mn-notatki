@@ -33,6 +33,24 @@ Ux = z
 \subsubsection{Metoda Doolittle'a}
 \subsubsection{Metoda Crouta}
 \subsubsection{Metoda Cholesky'ego}
+
+\begin{tcolorbox}
+Jeśli macierz $A$ jest \textbf{symetryczna i dodatnio określona} to istnieje
+macierz dolnotrójkątna $L$ taka, że $L\cdot L^T = A$.\\
+Ten rozkład nazywamy rozkładem Cholesky'ego.
+\end{tcolorbox}
+\begin{gather*}
+l_{11} = \sqrt{a_{11}}\\
+l_{j1} = \frac{a_{j1}}{l_{11}}\\
+l_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} l_{ik}^2}, \text{~~ dla ~~} j = 2, 3, \ldots, n\\
+l_{ji} = \frac{1}{l_{ii}} \left( a_{ji} - \sum_{k=1}^{i-1} l_{jk} l_{ik} \right),
+\text{~~ dla ~~}
+\begin{cases}
+i = 2,3 \ldots, n\\
+j = i +1, i+2, \ldots, n
+\end{cases}
+\end{gather*}
+
 \subsubsection{Istnienie rozkładu LU}
 
 \subsection{Algorytm eliminacji Gaussa}
@@ -45,7 +63,7 @@ Wtedy $k$-ty krok algorytmu Gaussa możemy podzielić na następujące etapy:
     na pozycji $a_kk$.
     \item Wyzeruj elementy pod elementem głownym.
     \[
-    A_i \leftarrow A_i - \frac{a_{ik}}{a_{kk}} \cdot A_k, \text{~~ dla} k+1, \ldots, n
+    A_i \leftarrow A_i - \frac{a_{ik}}{a_{kk}} \cdot A_k, \text{~~ dla ~~} k+1, \ldots, n
     \]
 \end{itemize}
 
