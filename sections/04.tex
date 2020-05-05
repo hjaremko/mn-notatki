@@ -71,7 +71,11 @@ l_{n1}u_{11} & l_{n1}u_{12} + l_{n2}u_{22} & \ldots & \sum_{i=1}^{n} l_{ni}u_{in
 \textbf{Rozkład Doolittle'a:} $l_{ii} = 1$\\
 \textbf{Rozkład Cholesky'ego:} $l_{ii} = u_{ii}$
 
-\pagebreak
+% \pagebreak
+
+\subsubsection{Metoda Gaussa}
+Zerując $i$-tym wierszem $j$-ty wiersz należy wpisać na pozycji $l_{ji}$
+wspólczynnik przez który został pomnożony wiersz $i$-ty.
 
 \subsubsection{Metoda Doolittle'a}
 % Dobierając odpowiednią kolejność rozwiązywania równań
@@ -194,11 +198,11 @@ kolumnamy macierzy $A^{-1}$.
 
 \subsection{Poprawianie iteracyjne}
 
-\begin{itemize}
-    \item $x_0$ - przybliżenie początkowe
-    \item $A = LU$ - macierz
-    \item $\varepsilon$ - zakładana precyzja
-\end{itemize}
+% \begin{itemize}
+    % \item $x_0$ - przybliżenie początkowe
+    % \item $A = LU$ - macierz
+    % \item $\varepsilon$ - zakładana precyzja
+% \end{itemize}
 \begin{tcolorbox}
 \textbf{Algorytm - jeden krok}
 \begin{itemize}

@@ -1,0 +1,57 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Metoda ortogonalizacji Gramma-Schmidta}
+
+\begin{tcolorbox}
+\textbf{Norma indukowana}
+\[
+||x|| = \sqrt{\langle x,x \rangle}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Prostopadłość}\\
+Wektory $u$ i $v$ nazywamy \textbf{ortogonalnymi} jeżeli $\langle x,y \rangle = 0$.\\
+Układ wektórów $x_1, \ldots, x_k, k \geqslant 1$ nazywamy \textbf{ortonormalnymi}
+jeżeli:
+\begin{itemize}
+    \item $||x_i|| = 1$ dla $i = 1, \ldots, k$
+    \item iloczyn skalarny $\langle x_i; x_j \rangle = 0$ dla $i,j = 1, \ldots, k$ oraz $i \neq j$
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Macierz $Q_{n\times n}$ nazywamy \textbf{ortonormalną} \textit{(lub unitarną)}
+jeżeli $Q_T \cdot Q = \mathcal{I}_n$.\\
+
+Jeżeli macierz $Q$ jest ortonormalna, to wiersze i kolumny tej macierzy
+tworzą układy wektorów ortonormalnych.\\
+
+$Q^T$ jest macierzą odwrotną do macierzy ortonormalnej $Q$.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\[
+Qx = b \Rightarrow x = Q^T b
+\]
+\end{tcolorbox}
+
+\subsection{Algorytm}
+\begin{tcolorbox}
+Zadaniem algorytmu ortonormalizacji jest przekształcenie układu
+wektorów $X_1 ,X_2 ,\ldots,X_k$ w układ wektorów ortnonormalncyh $Y_1 ,Y_2 ,\ldots,Y_k$.
+\end{tcolorbox}
+
+\begin{gather*}
+\hat{Y}_i = X_i - \sum_{j=1}^{i-1} \langle X_i; Y_i \rangle Y_j, \tab \text{dla~~ } i = 1, \ldots, k\\
+Y_i =
+\begin{cases}
+\frac{\hat{Y}_i}{||\hat{Y}_i||}, \tab \text{jeżeli~~ } \hat{Y}_i \neq 0\\
+0, \tab \text{~~~~~~jeżeli~~ } \hat{Y}_i = 0
+\end{cases}
+\end{gather*}
+
+\pagebreak
+\end{document}
