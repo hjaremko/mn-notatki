@@ -45,13 +45,35 @@ wektorów $X_1 ,X_2 ,\ldots,X_k$ w układ wektorów ortnonormalncyh $Y_1 ,Y_2 ,\
 \end{tcolorbox}
 
 \begin{gather*}
-\hat{Y}_i = X_i - \sum_{j=1}^{i-1} \langle X_i; Y_i \rangle Y_j, \tab \text{dla~~ } i = 1, \ldots, k\\
+\hat{Y}_i = X_i - \sum_{j=1}^{i-1} \overbrace{\langle X_i; Y_j \rangle}_{r_{ji}} Y_j, \tab \text{dla~~ } i = 1, \ldots, k\\
 Y_i =
 \begin{cases}
-\frac{\hat{Y}_i}{||\hat{Y}_i||}, \tab \text{jeżeli~~ } \hat{Y}_i \neq 0\\
+\frac{\hat{Y}_i}{||\hat{Y}_i|| }, \tab \text{jeżeli~~ } \hat{Y}_i \neq 0\\
 0, \tab \text{~~~~~~jeżeli~~ } \hat{Y}_i = 0
 \end{cases}
 \end{gather*}
+
+\subsection{Rozkład $QR$}
+\begin{tcolorbox}
+\[
+A = QR = %[y_1 y_2 \ldots y_n]
+\begin{bmatrix}
+Y_1 & Y_2 & \ldots & Y_n
+\end{bmatrix}
+\begin{bmatrix}
+r_{11} & r_{12} & \ldots & r_{1n}\\
+0      & r_{22} & \ldots & r_{2n}\\
+\vdots & \vdots & \ddots & \ldots\\
+0      & 0      & \ldots & r_{nn}\\
+\end{bmatrix}
+\]
+\[
+r_{ji} = \langle X_i; Y_j \rangle
+\]
+\[
+r_{ii} = ||\hat{Y}_i||
+\]
+\end{tcolorbox}
 
 \pagebreak
 \end{document}
