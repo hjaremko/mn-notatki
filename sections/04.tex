@@ -117,10 +117,10 @@ l_{j1} = \frac{a_{j1}}{l_{11}}\\
 l_{ii} = \sqrt{a_{ii} - \sum_{k=1}^{i-1} l_{ik}^2}, \text{~~ dla ~~} j = 2, 3, \ldots, n\\
 l_{ji} = \frac{1}{l_{ii}} \left( a_{ji} - \sum_{k=1}^{i-1} l_{jk} l_{ik} \right),
 \text{~~ dla ~~}
-\begin{cases}
-i = 2,3 \ldots, n\\
-j = i +1, i+2, \ldots, n
-\end{cases}
+\begin{aligned}
+&i = 2,3 \ldots, n\\
+&j = i +1, i+2, \ldots, n
+\end{aligned}
 \end{gather*}
 
 \subsubsection{Istnienie rozkładu LU}
@@ -176,6 +176,22 @@ $\frac{|a_{ik}|}{s_i}$ jest największe.
 \end{tcolorbox}
 
 \subsection{Odwracanie macierzy trójkątnych}
+
+\begin{align*}
+&l_{ii}' = \frac{1}{l_{ii}}\\
+&l_{ij}' = -l_{ii}' \sum_{k=j}^{i-1} l_{ik} l_{kj}' \tab \begin{aligned}
+&i = 1, 2, \ldots, n\\
+&j = 1, 2, \ldots, i -1
+\end{aligned}
+\end{align*}
+\begin{align*}
+&u_{ii}' = \frac{1}{u_{ii}}\\
+&u_{ij}' = -u_{ii}' \sum_{k=j}^{i-1} u_{ki} l_{jk}' \tab \begin{aligned}
+&j = 1, 2, \ldots, i -1\\
+&i = 1, 2, \ldots, n
+\end{aligned}
+\end{align*}
+
 \subsection{Odwracanie przez rozkład LU}
 
 \begin{tcolorbox}
