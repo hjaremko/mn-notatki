@@ -40,7 +40,50 @@ Ux = z
 
 \subsection{Odwracanie macierzy trójkątnych}
 \subsection{Odwracanie przez rozkład LU}
+
+\begin{tcolorbox}
+Jeśli mamy rozkład $A = LU$ to macierz odwrotną do $A$ możemy wyznaczyć przez
+\begin{itemize}
+    \item $A^{-1} = U^{-1} \cdot L^{-1}$
+\end{itemize}
+Powyższy algorytm wykorzystuje fakt, że
+\[
+(D\cdot G)^{-1} = G^{-1} \cdot D^{-1}
+\]
+\end{tcolorbox}
+
+Usprawniamy algorytm rozwiązując równania
+\[
+Ax_i = LUx_i = e_i
+\]
+gdzie $e_i$ to kolejne wektory jednostkowe. Wektory $x_i$ są kolejnymi
+kolumnamy macierzy $A^{-1}$.
+
 \subsection{Poprawianie iteracyjne}
+
+\begin{itemize}
+    \item $x_0$ - przybliżenie początkowe
+    \item $A = LU$ - macierz
+    \item $\varepsilon$ - zakładana precyzja
+\end{itemize}
+\begin{tcolorbox}
+\textbf{Algorytm - jeden krok}
+\begin{itemize}
+    \item $r_k = b - Ax_k$
+    \item jeżeli $|r_k| < \varepsilon$ zakończ i zwróć $x_k$
+    \item $e_k = $ rozwiązanie układu $Ae_k = LUe_k = r_k$
+    \item $x_{k+1} = x_k + e_k$
+\end{itemize}
+\end{tcolorbox}
+
+\begin{itemize}
+    \item Wektor rezydualny $r_k$ należy obliczyć w wyższej precyzji
+    \textit{(np. \texttt{double} dla \texttt{float}, \texttt{long double} dla
+    \texttt{double})} bo mamy tam znaczne kasowanie bitów znaczących.
+    \item Jeżeli obliczając $x_0$ dokonaliśmy rozkładu $LU$ macierzy $A$ to
+    jeden krok poprawiania jest tani \textit{(koszt kwadratowy)}.
+\end{itemize}
+
 
 \pagebreak
 \end{document}
