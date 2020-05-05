@@ -11,6 +11,9 @@ Ax = b
 \[
 \text{gdzie } A \in \mathbb{R}^{n \times n}, b \in \mathbb{R}^n
 \]
+\[
+cond(A) = ||A^{-1}||\cdot ||A||
+\]
 \end{tcolorbox}
 
 \subsection{Rozkład LU}
@@ -20,18 +23,79 @@ Ax = b
 A = LU
 \]
 \[
-Ax = L(Ux) = b
-\]
-\[
-\begin{cases}
+Ax = L(Ux) = b \Rightarrow \begin{cases}
 Lz = b\\
 Ux = z
 \end{cases}
 \]
 \end{tcolorbox}
 
+\[
+\begin{bmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \ldots & a_{nn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+l_{11} & 0 & \ldots & 0\\
+l_{21} & l_{22} & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+l_{n1} & l_{n2} & \ldots & l_{nn}
+\end{bmatrix}
+\begin{bmatrix}
+u_{11} & u_{12} & \ldots & u_{1n}\\
+0      & u_{22} & \ldots & u_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0      & 0      & \ldots & u_{nn}
+\end{bmatrix}
+\]
+\[
+\begin{bmatrix}
+a_{11} & a_{12} & \ldots & a_{1n}\\
+a_{21} & a_{22} & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \ldots & a_{nn}
+\end{bmatrix}
+=
+\begin{bmatrix}
+l_{11}u_{11} & l_{11}u_{12} & \ldots & l_{11}u_{1n}\\
+l_{21}u_{11} & l_{21}u_{12} + l_{22}u_{22} & \ldots & l_{21}u_{1n} + l_{22}u_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+l_{n1}u_{11} & l_{n1}u_{12} + l_{n2}u_{22} & \ldots & \sum_{i=1}^{n} l_{ni}u_{in}
+\end{bmatrix}
+\]
+
+\textbf{Rozkład Crouta:} $u_{ii} = 1$\\
+\textbf{Rozkład Doolittle'a:} $l_{ii} = 1$\\
+\textbf{Rozkład Cholesky'ego:} $l_{ii} = u_{ii}$
+
+\pagebreak
+
 \subsubsection{Metoda Doolittle'a}
+% Dobierając odpowiednią kolejność rozwiązywania równań
+% \begin{gather*}
+% u_{11} = a_{11} \tab \ldots \tab u_{1n} = a_{1n}\\
+% l_{21} = \frac{a_{21}}{u_{11}} \tab \ldots \tab l_{n1} = \frac{a_{n1}}{u_{11}}\\
+% u_{22} = a_{22} - l_{21}u_{12}\tab\ldots\tab u_{2n} = a_{2n} - l_{21}u_{1n}\\
+% l_{32} = \frac{a_{32} - l_{31}u_{12}}{u_{22}}\tab\ldots\tab l_{n2} = \frac{a_{n2} - l_{n1}u_{12}}{u_{22}}\\
+% \end{gather*}
+\[
+u_{ij} = a_{ij} - \sum_{k=1}^{i-1} l_{ik} u_{kj}, \tab \text{dla ~~} j = i, i+1, \ldots, n
+\]
+\[
+l_{ji} = \frac{ a_{ji} - \sum_{k=1}^{i-1} l_{jk} u_{ki} }{u_{ii}}, \tab \text{dla ~~} j = i+1, i+2, \ldots, n
+\]
+
+Z ostatniego równania wynika, że metoda nie zadziała, gdy
+$u_{ii}=0$.
+
 \subsubsection{Metoda Crouta}
+
+Metoda ta jest analogiczną do metody Doolittle’a, różnica polega na tym, że
+diagonala macierzy $U$ jest wypełniona liczbami $1$.
+
 \subsubsection{Metoda Cholesky'ego}
 
 \begin{tcolorbox}
