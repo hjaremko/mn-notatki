@@ -36,7 +36,37 @@ Ux = z
 \subsubsection{Istnienie rozkładu LU}
 
 \subsection{Algorytm eliminacji Gaussa}
+
+Oznaczamy przez $A_i$ $i$-ty wiersz macierzy $A$ \textit{(jako wektor)}.
+Wtedy $k$-ty krok algorytmu Gaussa możemy podzielić na następujące etapy:
+\begin{itemize}
+    \item W podmacierzy $A(k\ldots n, k\ldots n)$ wybierz element głowny $x_k$.
+    \item Zamień wiersze lub kolumny tak, aby element głowny $x_k$ znalazł się
+    na pozycji $a_kk$.
+    \item Wyzeruj elementy pod elementem głownym.
+    \[
+    A_i \leftarrow A_i - \frac{a_{ik}}{a_{kk}} \cdot A_k, \text{~~ dla} k+1, \ldots, n
+    \]
+\end{itemize}
+
 \subsubsection{Wybór elementu głównego}
+
+\begin{tcolorbox}
+\textbf{Częściowy} - wybieramy największy na moduł element w pierwszej kolumnie
+bieżącej podmacierzy.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Pełny} - wybieramy największy na moduł element w całej
+bieżącej podmacierzy.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Skalowany} - na poczaku całego algorytmu dla każdego wiersza obliczamy
+jego normę $s_i$ \textit{(najczęściej maksimum)}, w $k$-tym kroku wybieramy
+element $a_{ik}$ z pierwszej kolumny podmacierzy, którego
+$\frac{|a_{ik}|}{s_i}$ jest największe.
+\end{tcolorbox}
 
 \subsection{Odwracanie macierzy trójkątnych}
 \subsection{Odwracanie przez rozkład LU}
