@@ -37,7 +37,11 @@ Ux = z
 \begin{tcolorbox}
 Jeśli macierz $A$ jest \textbf{symetryczna i dodatnio określona} to istnieje
 macierz dolnotrójkątna $L$ taka, że $L\cdot L^T = A$.\\
-Ten rozkład nazywamy rozkładem Cholesky'ego.
+Ten rozkład nazywamy rozkładem Cholesky'ego.\\
+
+\textbf{NIE SPRAWDZAMY} czy macierz jest dodatnio określona. Wykonujemy
+algorytm i sprawdzamy czy pod pierwiastiem nie otrzymamy liczby ujemnej.\\
+\textbf{Należy} sprawdzić czy macierz jest symetryczna.
 \end{tcolorbox}
 \begin{gather*}
 l_{11} = \sqrt{a_{11}}\\
@@ -52,6 +56,23 @@ j = i +1, i+2, \ldots, n
 \end{gather*}
 
 \subsubsection{Istnienie rozkładu LU}
+
+\begin{tcolorbox}
+Jeśli $A = [a_{ij}]$ jest macierzą kwadratową $n\times n$ taką, że wszystkie
+minory główne są nieosobliwe, tzn.:
+\[
+\begin{vmatrix}
+a_{11} & \ldots & a_{1k}\\
+\vdots & \ddots & \vdots\\
+a_{k1} & \ldots & a_{kk}
+\end{vmatrix} \neq 0, \text{~~~~~dla~~~} 1,\ldots,n
+\]
+to istnieją rozkłady $A = LU$ Crouta i Doolittle'a.
+\end{tcolorbox}
+\begin{tcolorbox}
+Jeśli macierz $A \in \mathbb{R}^{n\times n}$ jest nieosobliwa to istnieją
+rozkłady $PA = LU$ Crouta i Doolittle'a, gdzie $P$ jest macierzą permutacji.
+\end{tcolorbox}
 
 \subsection{Algorytm eliminacji Gaussa}
 
