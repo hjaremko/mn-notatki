@@ -26,7 +26,7 @@
 \RequirePackage{adjustbox}
 \RequirePackage{minted}
 \RequirePackage{fontspec}
-\RequirePackage{fontawesome}
+% \RequirePackage{fontawesome}
 \RequirePackage{newpxmath}
 \RequirePackage{graphicx}
 \RequirePackage[TS1,T1]{fontenc}
