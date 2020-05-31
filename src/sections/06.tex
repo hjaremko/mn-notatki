@@ -1,0 +1,238 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Metody iteracyjne rozwiązywania układów równań liniowych}
+
+
+\begin{tcolorbox}
+\textbf{Układ równań}
+\[
+Ax = b
+\]
+\end{tcolorbox}
+
+Zamiast jawnego szukania rozwiązania $x$ tworzymy ciągi $x_n$ zbieżne do $x.$
+
+\subsection{Postać macierzowa metod iteracynych}
+
+\begin{tcolorbox}
+% \textbf{Układ równań}
+Niech $Q$ będzie dowloną macierzą.
+\[
+(Q - Q + A)x = b
+\]
+\[
+Qx = (Q-A)x + b
+\]
+Zamieniamy to na metodę iteracyjną:
+\[
+Qx^{(n+1)} = (Q - A)x^{(n)} + b
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Metoda iteracyjna jest zbieżna jeżeli ciąg $\{x^{(n)}\}$ jest zbieżny do
+rozwiązania $x$ dla dowolnego punktu startowego $x_0$.
+\end{tcolorbox}
+
+Macierz $Q$ powinna spełniać:
+
+\begin{itemize}
+    \item Obliczenie $x^{(n)}$ jest szybkie \textit{(odpowiedni układ równań
+    $Q y = c$ jest "łatwy" do rozwiązania)}.
+    \item Ciąg  $\{x^{(n)}\}$  jest szybko zbieżny do $x$.
+\end{itemize}
+
+\pagebreak
+
+\subsubsection{Rozkład macierzy $A$}
+\begin{tcolorbox}
+\[
+A = L + D + U
+\]
+\end{tcolorbox}
+
+\[
+A
+=
+\begin{bmatrix}
+0      & 0      & \ldots & 0\\
+a_{21} & 0      & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+a_{n1} & a_{n2} & \ldots & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+a_{11} & 0      & \ldots & 0\\
+0      & a_{22} & \ldots & 0\\
+\vdots & \vdots & \ddots & \vdots\\
+0      & 0      & \ldots & a_{nn}
+\end{bmatrix}
++
+\begin{bmatrix}
+0      & a_{12} & \ldots & a_{1n}\\
+0      &        & \ldots & a_{2n}\\
+\vdots & \vdots & \ddots & \vdots\\
+0      & 0      & \ldots & 0
+\end{bmatrix}
+\]
+
+
+\subsection{Metoda Jacobiego}
+\begin{tcolorbox}
+\textbf{Macierzowo}
+\[
+Q = D
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\textbf{Algorytmicznie}
+\[
+x_k^{n+1} = \frac{1}{a_{kk}} \left(b_k - \sum^{n}_{\substack{m=1 \\ m\neq k}}
+a_{km} x_m^n \right)
+\]
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+4x_1 + 2x_2 - 3x_3 = 8\\
+2x_1  - 8x_2 + 5x_3 = 4\\
+3x_1 - 8x_2 + 7x_3 = 5
+\end{cases}
+\]
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+x_1^{n+1} =  \frac{1}{4} ( 8 - 2x_2^n + 3x_3^n  ) \\
+x_2^{n+1} = -\frac{1}{8} ( 4 - 2x_1^n - 5x_3^n  ) \\
+x_3^{n+1} =  \frac{1}{7} ( 5 - 3x_1^n + 8x_2^n  )
+\end{cases}
+\]
+    \end{minipage}%
+\end{table}
+
+
+\subsection{Metoda Gaussa-Seidla}
+\begin{tcolorbox}
+\textbf{Macierzowo}
+\[
+Q = L + D
+\]
+\[
+Qx^{(n+1)} = (Q - A)x^{(n)} + b
+\]
+\[
+(L+D)x^{(n+1)} = (-U)x^{(n)} + b
+\]
+\[
+Dx^{(n+1)} = (-U)x^{(n)} - Lx^{(n+1)} + b
+\]
+\[
+G = -(L+D)^{-1} U
+\]
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+4x_1 + 2x_2 - 3x_3 = 8\\
+2x_1  - 8x_2 + 5x_3 = 4\\
+3x_1 - 8x_2 + 7x_3 = 5
+\end{cases}
+\]
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+x_1^{n+1} =  \frac{1}{4} ( 8 - 2x_2^n + 3x_3^n  ) \\
+x_2^{n+1} = -\frac{1}{8} ( 4 - 2x_1^{n+1} - 5x_3^n  ) \\
+x_3^{n+1} =  \frac{1}{7} ( 5 - 3x_1^{n+1} + 8x_2^{n+1}  )
+\end{cases}
+\]
+    \end{minipage}%
+\end{table}
+
+\subsection{Metoda SOR}
+\begin{tcolorbox}
+\textbf{Macierzowo}
+\[
+Q = \frac{1}{\omega} (D + \omega L) = \frac{1}{\omega} D + L
+\]
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+4x_1 + 2x_2 - 3x_3 = 8\\
+2x_1  - 8x_2 + 5x_3 = 4\\
+3x_1 - 8x_2 + 7x_3 = 5
+\end{cases}
+\]
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+\[
+\begin{cases}
+\tilde{x}_1^{n+1} =  \frac{1}{4} ( 8 - 2x_2^n + 3x_3^n  ) \\
+x_1^{n+1} =  (1 -\omega)x_1^n + \omega \tilde{x}_1^{n+1} \\
+\tilde{x}_2^{n+1} = -\frac{1}{8} ( 4 - 2x_1^{n+1} - 5x_3^n  ) \\
+x_2^{n+1} =  (1 -\omega)x_2^n + \omega \tilde{x}_2^{n+1} \\
+\tilde{x}_3^{n+1} =  \frac{1}{7} ( 5 - 3x_1^{n+1} + 8x_2^{n+1}  ) \\
+x_3^{n+1} =  (1 -\omega)x_3^n + \omega \tilde{x}_3^{n+1} \\
+\end{cases}
+\]
+    \end{minipage}%
+\end{table}
+
+\subsection{Metoda Richardsona \textit{(poprawianie iteracyjne)}}
+\begin{tcolorbox}
+\textbf{Macierzowo}
+\[
+Q = I
+\]
+\end{tcolorbox}
+
+\subsection{Twierdzenia o zbieżności metod iteracyjnych}
+
+\begin{tcolorbox}
+\[
+x^{k+1} = G x^k + c   ~~~~~~~(\star)
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Jeżeli $||G|| < 1$ dla pewnej normy macierzowej to metoda iteracyjna $(\star)$
+jest zbieżna.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Metoda iteracyjna $(\star)$ jest zbieżna wtedy i tylko wtedy gdy promień
+spektralny macierzy $G$ jest mniejszy od $1$.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Dla układu równań $Ax = b$. Jeżeli macierz $A$ jest dominująca przekątniowo
+to metody Jacobiego i Gaussa-Seidla są zbieżne.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Jeżeli
+\begin{itemize}
+    \item $A$ jest hermitowska, dodatnio określona,
+    \item macierz $Q = \frac{1}{\omega} D + L$ jest nieosobliwa,
+    \item $\omega$ należy do przedziału $(0,2)$
+\end{itemize}
+to metoda $SOR$ jest zbieżna.
+\end{tcolorbox}
+
+\pagebreak
+\end{document}
