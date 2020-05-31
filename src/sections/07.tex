@@ -1,0 +1,331 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Zagadnienia własne}
+
+\subsection{Definicje}
+\begin{tcolorbox}
+Liczbę $\lambda \in \mathbb{C}$ nazywamy \textbf{wartością własną}
+\underline{macierzy kwadratowej} $A \in \mathbb{C}^{n\times n}$, jeżeli
+istnieje wektor $v \in \mathbb{C}^n$ taki, że $Av = \lambda v$.\\
+
+Każdy wektor $v \neq 0$ spełniający równość $Av = \lambda v$ nazywamy
+\textbf{wektorem własnym} macierzy $A$ odpowiadającym wartości własnej
+$\lambda$.\\
+
+Zbiór wszystkich wartości własnych macierzy kwadratowej $A$ nazywamy
+\textbf{widmem macierzy $A$} \textit{(lub spektrum macierzy $A$)}
+i oznaczamy $\sigma(A)$.\\
+
+\textbf{Promień spektralny} macierzy $A$ \textit{(oznaczamy $\rho(A)$)}
+definiujemy jako
+\[
+\rho(A) := \max\{ |\lambda| : \lambda \in \sigma(A) \}
+\]
+\end{tcolorbox}
+\begin{tcolorbox}
+Jeżeli $v$ jest wektorem własnym dla $\lambda$, to każdy wektor postaci
+$\alpha v$, gdzie $\alpha \in \mathbb{R} \backslash \{0\}$ jest wektorem
+własnym macierzy $A$.
+\end{tcolorbox}
+
+\subsection{Metoda dokładna}
+\begin{tcolorbox}
+\[
+W_A(\lambda) = \det(A - \lambda \mathcal{I})
+\]
+nazywamy \textbf{wielomianem charakterystycznym} macierzy $A$.\\
+Stopień tego wielomianu jest równy rozmiarowi tej macierzy.
+\end{tcolorbox}
+\begin{tcolorbox}
+Wszystkie wartości własne macierzy $A$ są pierwiastkami jej wielomianu
+charakterystycznego, czyli $\sigma(A) = W_A^{-1}\left(\{0\}\right)$.
+\end{tcolorbox}
+\begin{tcolorbox}
+Wyznaczanie wartości własnych jest tak samo trudne jak wyznaczanie pierwiastków
+wielomianu.
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+
+Wyznacz wartości własne macierzy $A = \left[ \begin{smallmatrix}
+1 & 2 & 1\\
+2 & 1 & 1\\
+2 & -1 & 0
+\end{smallmatrix} \right]$.
+
+Zgodnie z definicją wielomian charakterystyczny $A$ to
+\[
+W_A(\lambda) = \det(A - \lambda \mathcal{I}) =
+\left[ \begin{smallmatrix}
+1 & 2 & 1\\
+2 & 1 & 1\\
+2 & -1 & 0
+\end{smallmatrix} \right]
+=
+-\lambda^3 + 2\lambda^2 + 6\lambda
+\]
+Pierwiastki tego wielomianu to $\lambda_1 = 0, \lambda_2 = 1 - \sqrt{7},
+\lambda_3 = 1 + \sqrt{7}$. \\
+Na mocy twierdzenia są to wartości własne macierzy $A$.
+
+\subsection{Metoda potęgowa}
+
+\begin{tcolorbox}
+Metoda potęgowa pozwala wyznaczyć \textbf{dominującą wartość własną}, czyli
+o największym module i odpowiadający jej wektor własny.\\
+
+Dla macierzy $A$ i wektor początkowego $x_0$ wyznaczamy
+\[
+x_k = A^k x_0
+\]
+który przy pewnych założeniach jest zbieżny do wektora własnego odpowiadającego
+dominującej wartości własnej.
+\end{tcolorbox}
+\begin{tcolorbox}
+Działa poprawnie jeżeli:
+\begin{itemize}
+    \item Wartość o największym module jest odseparowana od pozostałych
+    \textit{(ich moduły są wyraźnie mniejsze)}.
+    \item Macierz ma prostą strukturę tzn. wektory własne istnieją i tworzą
+    bazę przestrzeni.
+\end{itemize}
+\end{tcolorbox}
+
+\subsubsection{Algorytm}
+\begin{tcolorbox}
+\textbf{Wejście:} $A, x_0, n$\\
+Dla $k$ od $1$ do $n$ powtarzaj
+\begin{itemize}
+    \item $y_{k-1} = \frac{x_{k-1}}{||x_{k-1}||}$
+    \item $x_k = A y_{k-1}$
+    \item $r_k = \frac{\varphi(x_k)}{\varphi(x_{k-1})}$
+\end{itemize}
+\textbf{Wyjście:}
+\begin{itemize}
+    \item $r_n$ - przybliżenie największej wartości własnej $A$
+    \item $x_k$ - przybliżenie wektora własnego
+\end{itemize}
+\vskip 0.3cm
+Wybór funkcjonału ($x = (x_1, x_2, \ldots, x_n)$)
+\begin{itemize}
+    \item $\varphi(x) = x_i$
+    \item $\varphi_k(x) = \langle x, x_{k-1} \rangle$
+\end{itemize}
+
+\end{tcolorbox}
+
+
+\subsection{Odwrotna metoda potęgowa}
+\begin{tcolorbox}
+Jeżeli $\lambda$ jest wartością własną nieosobliwej macierzy $A$, to
+$\lambda^{-1}$ jest wartością własną macierzy $A^{-1}$.
+\end{tcolorbox}
+
+Jeżeli dla macierzy $A$ mamy
+\[
+|\lambda_1| \geqslant |\lambda_2| \geqslant \ldots \geqslant
+|\lambda_{n-1}|  > |\lambda_n| > 0
+\]
+to
+\[
+|\lambda_1^{-1}| \leqslant |\lambda_2^{-1}| \leqslant \ldots \leqslant
+|\lambda_{n-1}^{-1}| < |\lambda_n^{-1}|
+\]
+
+Zatem aby wyznaczyć $\lambda_n^{-1}$ można zastosować metodę potęgową dla
+macierzy $A^{-1}$.
+
+\begin{tcolorbox}
+Nie należy obliczać $A^{-1}$.\\
+
+Zamiast obliczać $x_{k+1} = A^{-1} x_k$ rozwiązujemy układ równań
+\[
+Ax_{k+1} = x_k
+\]
+
+Dobrze jest najpierw rozłożyć macierz $A$ np. na $LU$ i wykorzystać to do
+rozwiązywania układu równań.
+\end{tcolorbox}
+
+
+\subsection{Wartość własna najbliższa $\mu$}
+\begin{tcolorbox}
+Jeżeli $\lambda$ jest wartością własną nieosobliwej macierzy $A$, to
+$\lambda - \mu$ jest wartością własną macierzy $A - \mu\mathcal{I}$.
+\end{tcolorbox}
+
+% \begin{tcolorbox}
+Stosując odwrotną metodę potęgową dla macierzy $A - \mu\mathcal{I}$ otrzymujemy
+$\beta$ \textit{(najmniejszą wartość własną tej macierzy)}.\\
+
+Wtedy $\lambda = \mu + \beta$ jest wartością własną $A$ najbliższą $\mu$.
+% \end{tcolorbox}
+
+\begin{tcolorbox}
+Zamiast obliczać $x_{k+1} = (A - \mu\mathcal{I})^{-1} x_k$ rozwiązujemy układ równań
+\[
+(A - \mu\mathcal{I}) x_{k+1} = x_k
+\]
+\end{tcolorbox}
+
+
+\subsection{Metoda QR}
+
+\begin{tcolorbox}
+\textbf{Wejście:} macierz $A$, ilość iteracji $M$ \\
+Dla $k$ od $1$ do $M$ wykonujemy:
+\begin{itemize}
+    \item $(Q_k, R_k) := $ rozkład $QR$ macierzy $A_k$
+    \textit{(gdzie $Q$ - unitarna)}
+    \item $A_{k + 1} := R_kQ_k$
+\end{itemize}
+\end{tcolorbox}
+
+\begin{itemize}
+    \item Przy pewnych założeniach elementy poniżej przekątnej w macierzach
+    $A_k$ zmierzają do zera.
+    \item Elementy przekątniowe dążą do wartości własnych.
+    \item W przypadku zespolonych wartości własnych $\alpha \pm i \beta$
+    na przekątnej pojawią się klatki $2 \times 2$ postaci $
+    \left[ \begin{smallmatrix}
+    \alpha & \beta\\
+    -\beta & \alpha
+    \end{smallmatrix} \right]
+    $.
+\end{itemize}
+
+
+\subsection{Macierze Hessenberga}
+
+Aby przyśpieszyć zbieżność algorytmu $QR$ najpierw sprowadza się macierz
+do postaci Hessenberga.
+
+\begin{tcolorbox}
+Macierz $H = [h_{ij}]$ nazywamy \textbf{macierzą Hessenberga}, jeżeli
+$h_{ij} = 0$ dla $j > i + 1$, czyli jest ona postaci
+\[
+    H = \left[ \begin{smallmatrix}
+    \star & \star & \star & \star & \star & \star\\
+    \star & \star & \star & \star & \star & \star\\
+    0 & \star & \star & \star & \star & \star\\
+    0 & 0 & \star & \star & \star & \star\\
+    0 & 0 & 0 & \star & \star & \star\\
+    0 & 0 & 0 & 0 & \star & \star
+    \end{smallmatrix} \right]
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Jeśli $A$ jest macierzą kwadratową, to istnieje macierz ortogonalna $Q$ oraz
+macierz Hessenberga $H$ takie, że
+\[
+A = Q^T H Q
+\]
+W szczególności macierze $A$ oraz $H$ mają takie same wartości własne.
+\end{tcolorbox}
+
+\subsubsection{Algorytm redukcji pierwszej kolumny macierzy do postaci
+Hassenberga}
+
+\begin{tcolorbox}
+$a_{k1}$ = element głowny spośród $a_{i1}$ dla $i > 2$\\
+Zamiana wierszy $w_2$ i $w_k$ oraz kolumnd $k_2$ i $k_k$.
+Dla $i$ od $3$ do $n$ wykonaj:
+\begin{itemize}
+    \item $s := \frac{a_{i1}}{a_{21}} $
+    \item $w_i := w_i - s \cdot w_2$
+    \item $k_2 := k_2 + s\cdot k_i$
+\end{itemize}
+\end{tcolorbox}
+
+Po doprowadzeniu do postaci Hessenberga pierwszej kolumny, wywołujemy ten
+algorytm dla podmacierzy bez pierwszego wiersza i pierwszej kolumny itd.
+
+\subsection{Metoda QR z przesunięciami}
+
+\begin{tcolorbox}
+\textbf{Wejście:} $A$, $M$ \\
+$A_1 := $ przekształcenie macierzy $A$ do postaci Hessenberga
+Dla $k$ od $1$ do $M$ wykonujemy:
+\begin{itemize}
+    \item $(Q_k, R_k) := $ rozkład $QR$ macierzy $(A_k - z_k\mathcal{I})$
+    \item $A_{k + 1} := R_kQ_k + z_k\mathcal{I}$
+\end{itemize}
+\end{tcolorbox}
+
+Dobrze wybrane przesunięcie znacznie przyspiesza zbieżność metody.
+$z_k$ powinno być dobrym przybliżeniem jednej z wartości własnych.
+Jeżeli w ostatnim wierszu poza elementem diagonalnym mamy same 'prawie' zera
+to dokonujemy deflacji macierzy i dalsze obliczenia wykonujemy dla macierzy
+bez ostatniego wiersza i ostatniej kolumny.
+
+\subsection{Macierze podobne}
+
+\begin{tcolorbox}
+Macierze $A, B \in \mathbb{C}^{n \times n}$ są \textbf{podobne} jeżeli
+istnieje nieosobliwa macierz $P \in \mathbb{C}^{n \times n}$ taka, że
+\[
+B = P A P^{-1}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Macierze podobne mają te same zbiory wartości własnych.
+\end{tcolorbox}
+
+
+\subsection{Twierdzenie Gerszgorina}
+
+\begin{tcolorbox}
+Niech $A = [a_{ij}]_{i,j = 1,\ldots, n}$ będzie macierzą kwadratową.
+\begin{enumerate}
+    \item Jeżeli $C_i$ oznaczają koła domknięte na płaszczyźnie zespolonej
+    o środkach w punktach $a_{ii}$ i promieniach równych sumie modułów
+    elementów z danego wiersza spoza diagonali, tzn.
+    \[
+    C_i = \{ z \in \mathbb{C} : |z - a_{ii}| \leqslant
+    \sum_{\substack{j = 1\\ j \neq i}}^{n} |a_{ij}| \}
+    \Longrightarrow
+    \sigma(A) \subset \bigcup_{i=1}^n C_i
+    \]
+    Dla $i = 1, \ldots, n$.
+
+    \item Jeżeli $k$ kół $C_i$ tworzy zbiór rozłączny z pozostałymi kołami,
+    to w zbiorze tym leży dokładnie $k$ wartości własnych macierzy $A$.
+
+    \item Jeżeli do wyznaczenia kół zamiast wierszy użyjemy kolumn to
+    analogiczne twierdzenie jest prawdziwe.
+
+    \[
+    C'_i = \{ z \in \mathbb{C} : |z - a_{ii}| \leqslant
+    \sum_{\substack{j = 1\\ j \neq i}}^{n} |a_{ij}| \}
+    \Longrightarrow
+    \sigma(A) \subset \bigcup_{i=1}^n C'_i
+    \]
+\end{enumerate}
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+
+Wyznacz koła Gerszgorina dla macierzy $A = \left[ \begin{smallmatrix}
+5 & 1 & 0\\
+1 & 7 & 2\\
+-1 & -1 & 3
+\end{smallmatrix} \right]$.
+\begin{gather*}
+C_1 = \{ z \in \mathbb{C} : |z - 5| \leqslant |a_{12}| + |a_{13}| = 1 + 0 = 1 \} \\
+C_2 = \{ z \in \mathbb{C} : |z - 7| \leqslant |a_{21}| + |a_{23}| = 1 + 2 = 3 \} \\
+C_3 = \{ z \in \mathbb{C} : |z - 3| \leqslant |a_{31}| + |a_{33}| = 1 + 1 = 2 \} \\
+\end{gather*}
+Wartości własne macierzy $A$ to
+\begin{gather*}
+\lambda_1 = 5 \in C_1, C_2, C_3\\
+\lambda_2 = 5 + \sqrt{3} \in C_2\\
+\lambda_3 = 5 - \sqrt{3} \in C_2\\
+\end{gather*}
+
+
+\pagebreak
+\end{document}
