@@ -5,9 +5,10 @@ Notatki z wykładu Metody Numeryczne prowadzonego na Wydziale Matematyki i Infor
 **Notatki zostały przygotowane do druku w formacie A5!!**
 
 ### Pobieranie
-Skompilowane notatki można znaleźć w zakładce **Releases**.
+Skompilowane notatki można znaleźć [tutaj](https://github.com/hjaremko/mn-notatki/releases).
 
 ### Kompilacja
 ```
+cd src
 xelatex -shell-escape mn-notatki.tex
 ```
