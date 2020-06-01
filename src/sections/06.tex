@@ -29,6 +29,9 @@ Zamieniamy to na metodę iteracyjną:
 \[
 Qx^{(n+1)} = (Q - A)x^{(n)} + b
 \]
+\[
+x^{(n+1)} = Q^{-1}(Q - A)x^{(n)} + Q^{-1}b
+\]
 \end{tcolorbox}
 
 \begin{tcolorbox}
@@ -217,6 +220,9 @@ jest zbieżna.
 \begin{tcolorbox}
 Metoda iteracyjna $(\star)$ jest zbieżna wtedy i tylko wtedy gdy promień
 spektralny macierzy $G$ jest mniejszy od $1$.
+\[
+\rho(G) < 1
+\]
 \end{tcolorbox}
 
 \begin{tcolorbox}
