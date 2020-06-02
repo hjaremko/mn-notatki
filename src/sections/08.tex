@@ -156,8 +156,24 @@ stopnia $9$ w przedziale $[0,1]$?
 \]
 
 \subsection{Interpolacja Hermite'a}
-\subsection{Uogólnienie ilorazów różnicowych}
 
+\begin{tcolorbox}
+\[
+p_n(x) = \sum_{k=0}^{n} f[x_0,\ldots,x_k] \prod_{i=0}^{k-1} (x-x_i)
+\]
+\end{tcolorbox}
+
+\subsubsection{Uogólnienie ilorazów różnicowych}
+
+\begin{tcolorbox}
+\[
+f[x_0,\ldots,x_k] = \begin{cases}
+\frac{f^{(k)}(x_0)}{k!} \tab\tab\tab \text{~jeżeli } x_0 = x_k\\
+\frac{f[x_1,\ldots,x_k] - f[x_0,\ldots,x_{k-1}]}{x_k - x_0}
+\tab \text{jeżeli } x_0 \neq x_k
+\end{cases}
+\]
+\end{tcolorbox}
 
 \pagebreak
 \end{document}
