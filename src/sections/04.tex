@@ -20,13 +20,16 @@ cond(A) = ||A^{-1}||\cdot ||A||
 
 \begin{tcolorbox}
 \[
-A = LU
+PA = LU
 \]
 \[
-Ax = L(Ux) = b \Rightarrow \begin{cases}
-Lz = b\\
+PAx = L(Ux) = Pb \Rightarrow \begin{cases}
+Lz = Pb\\
 Ux = z
 \end{cases}
+\]
+\[
+\det(PA) = \det(LU) = \det(L)\cdot\det(U)\cdot\det(P)
 \]
 \end{tcolorbox}
 

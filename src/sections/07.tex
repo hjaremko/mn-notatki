@@ -110,8 +110,9 @@ Dla $k$ od $1$ do $n$ powtarzaj
 \vskip 0.3cm
 Wybór funkcjonału ($x = (x_1, x_2, \ldots, x_n)$)
 \begin{itemize}
-    \item $\varphi(x) = x_i$
-    \item $\varphi_k(x) = \langle x, x_{k-1} \rangle$
+    \item $\varphi(x) = x_i$, $\varphi_k(x) = \langle x, x_{k-1} \rangle$
+    \item $r_k \approx
+    \frac{\langle x_k, y_{k-1} \rangle}{\langle y_{k-1}, y_{k-1} \rangle} $
 \end{itemize}
 
 \end{tcolorbox}
@@ -231,7 +232,7 @@ Hassenberga}
 
 \begin{tcolorbox}
 $a_{k1}$ = element głowny spośród $a_{i1}$ dla $i > 2$\\
-Zamiana wierszy $w_2$ i $w_k$ oraz kolumnd $k_2$ i $k_k$.
+Zamiana wierszy $w_2$ i $w_k$ oraz kolumn $k_2$ i $k_k$.\\
 Dla $i$ od $3$ do $n$ wykonaj:
 \begin{itemize}
     \item $s := \frac{a_{i1}}{a_{21}} $
@@ -247,7 +248,7 @@ algorytm dla podmacierzy bez pierwszego wiersza i pierwszej kolumny itd.
 
 \begin{tcolorbox}
 \textbf{Wejście:} $A$, $M$ \\
-$A_1 := $ przekształcenie macierzy $A$ do postaci Hessenberga
+$A_1 := $ przekształcenie macierzy $A$ do postaci Hessenberga\\
 Dla $k$ od $1$ do $M$ wykonujemy:
 \begin{itemize}
     \item $(Q_k, R_k) := $ rozkład $QR$ macierzy $(A_k - z_k\mathcal{I})$
