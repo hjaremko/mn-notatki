@@ -9,6 +9,25 @@
 \end{tcolorbox}
 
 \subsection{Wzór interpolacyjny Newtona}
+\begin{tcolorbox}
+\[
+p_n(x) = \sum_{k=0}^{n} a_k \prod_{j=0}^{k-1} (x-x_j)
+\]
+\[
+a_k = \frac{y_k = p_{k-1}(x_k)}{\prod_{j=0}^{k-1}(x_k - x_j)}
+\]
+\end{tcolorbox}
+
+\begin{itemize}
+    \item \textbf{Dodanie kolejnych punktów nie narusza współczynników już
+    policzonych.}
+    \item Zmiena kolejności węzłów \textbf{zmienia} postać wzoru Newtona.
+    \item Zmiana wartości $y_0$ wymaga przeliczenia wszystkiego od początku.
+    \item \textbf{Nie należy przekształcać wielomianu}, lecz wyznaczyć wartość
+    $p_n(x)$ stosując \textbf{wzór Hornera}.
+    \item W praktyce współczynniki wyznacza się stosując \textbf{metodę ilorazów
+    różnicowych}.
+\end{itemize}
 
 \subsection{Wzór interpolacyjny Lagrange'a}
 \begin{tcolorbox}
@@ -19,6 +38,16 @@ p(x) = \sum_{k=0}^{n} y_k L_k(x)
 L_k(x) = \prod_{\substack{j=0\\j\neq k}}^{n} \frac{x-x_i}{x_k-x_j}
 \]
 \end{tcolorbox}
+
+\begin{itemize}
+    \item Nie należy przekształcać wielomianu Lagrange'a do postaci kanonicznej.
+    Obliczenia wartości pośrednich dokonujemy ewaluując odpowiednie wielomiany
+    $L_k$.
+    \item Dla ustalonyh węzłów $x_i$ wielomiany $L_j$ są stałe, zmiana
+    kolejności węzłów też ich nie zmienia.
+    \item Iterpolacja Lagrange'a jest zwłaszcza przydatna gdy \textbf{węzły
+    się nie zmieniają}, a zmieniają się tylko wartości.
+\end{itemize}
 
 \subsection{Ilorazy różnicowe}
 \subsection{Metoda Newtona z ilorazami różnicowymi}
