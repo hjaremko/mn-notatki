@@ -24,6 +24,8 @@ nazywamy \textbf{zadaniem interpolacji}.
 \begin{tcolorbox}
 \[
 p_n(x) = \sum_{k=0}^{n} a_k \prod_{j=0}^{k-1} (x-x_j)
+\tab
+p_0(x) = a_0 = y_0
 \]
 \[
 a_k = \frac{y_k - p_{k-1}(x_k)}{\prod_{j=0}^{k-1}(x_k - x_j)}
@@ -173,7 +175,7 @@ p_n(x) = \sum_{k=0}^{n} f[x_0,\ldots,x_k] \prod_{i=0}^{k-1} (x-x_i)
 
 \subsection{Błąd interpolacji wielomianowej}
 \begin{tcolorbox}
-Jeżeli $f i\in \mathcal{C}^{n+1}[a,b], p \in \Pi_n$ interpoluje $f$ w punktach
+Jeżeli $f \in \mathcal{C}^{n+1}[a,b], p \in \Pi_n$ interpoluje $f$ w punktach
 $x_0, x_1, \ldots, x_n \in [a,b]$ to dla każdego $x \in [a,b]$ istnieje
 $\xi_x \in (a,b)$ takie, że
 \[
