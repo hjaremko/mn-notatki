@@ -143,8 +143,33 @@ p_n(x) = \sum_{k=0}^{n} f[x_0,\ldots,x_k] \prod_{i=0}^{k-1} (x-x_i)
 % {"nodes":[{"x":107,"y":174,"text":"f[x_0]","isAcceptState":false},{"x":252,"y":174,"text":"f[x_0,x_1]","isAcceptState":false},{"x":395,"y":174,"text":"f[x_0,x_1,x_2]","isAcceptState":false},{"x":549,"y":174,"text":"f[x_0,x_1,x_2,x_3]","isAcceptState":false},{"x":110,"y":285,"text":"f[x_1]","isAcceptState":false},{"x":110,"y":388,"text":"f[x_2]","isAcceptState":false},{"x":110,"y":497,"text":"f[x_3]","isAcceptState":false},{"x":252,"y":285,"text":"f[x_1,x_2]","isAcceptState":false},{"x":252,"y":388,"text":"f[x_2,x_3]","isAcceptState":false},{"x":395,"y":285,"text":"f[x_1,x_2,x_3]","isAcceptState":false},{"x":8,"y":174,"text":"x_0","isAcceptState":false},{"x":8,"y":285,"text":"x_1","isAcceptState":false},{"x":8,"y":388,"text":"x_2","isAcceptState":false},{"x":8,"y":497,"text":"x_3","isAcceptState":false}],"links":[{"type":"Link","nodeA":0,"nodeB":1,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":1,"nodeB":2,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":2,"nodeB":3,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":4,"nodeB":1,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":4,"nodeB":7,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":5,"nodeB":7,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":5,"nodeB":8,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":6,"nodeB":8,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":7,"nodeB":2,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":7,"nodeB":9,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":8,"nodeB":9,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":9,"nodeB":3,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0}]}
 
 % \subsection{Zjawisko Runge'go}
+% \subsection{Zbieżność wielomianów iterpolacyjnych}
 
-\subsection{Zbieżność wielomianów iterpolacyjnych}
+% \subsection{Wielomiany Czybyszewa}
+% Aby zmniejszyć błąd można odpowiednio dobrać punkty \textit{(węzły)}.
+
+% % \begin{tcolorbox}
+% \textbf{Wielomiany Czybyszewa I rodzaju}
+
+% \begin{table}[!htb]
+%     \begin{minipage}{.5\linewidth}
+%         \[
+%         T_0(x) = 1 \tab T_1(x) = x
+%         \]
+%         \[
+%         T_n(x) = 2x \cdot T_{n-1}(x) - T_{n-2}(x)
+%         \]
+%     \end{minipage}%
+%     \begin{minipage}{.5\linewidth}
+%         \begin{gather*}
+%         T_2(x) = 2x^2 - 1\\
+%         T_3(x) = 4x^2 - 3x\\
+%         T_4(x) = 8x^4 - 8x^2 +1
+%         \end{gather*}
+%     \end{minipage}%
+% \end{table}
+
+% \end{tcolorbox}
 
 \subsection{Błąd inerpolacji wielomianowej}
 \begin{tcolorbox}
@@ -167,6 +192,7 @@ stopnia $9$ w przedziale $[0,1]$?
 \leqslant \frac{1}{10!} \approx 2.8 \cdot 10^{-7}
 \]
 
+\pagebreak
 \subsection{Interpolacja Hermite'a}
 
 \begin{tcolorbox}
@@ -187,5 +213,5 @@ f[x_0,\ldots,x_k] = \begin{cases}
 \]
 \end{tcolorbox}
 
-\pagebreak
+% \pagebreak
 \end{document}

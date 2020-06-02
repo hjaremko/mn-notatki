@@ -1,0 +1,88 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Funkcje sklejane}
+
+\subsection{Naturalna funkcja sklejana stopnia trzeciego}
+\begin{tcolorbox}
+\[
+h_i = x_{i+1} - x_i
+\]
+\[
+u_i = 2(h_{i-1} + h_i)
+\]
+\[
+b_i = \frac{6}{h_i}(y_{i+1}-y_i)
+\]
+\[
+v_i = b_i - b_{i-1}
+\]
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\[
+\begin{bmatrix}
+u_1 & h_1    &         &         &\\
+h_1 & u_2    & h_2     &         &\\
+    & \ddots & \ddots  & \ddots  &\\
+    &        & h_{n-3} & u_{n-2} & h_{n-2} \\
+    &        &         & h_{n-2} & u_{n-1}
+\end{bmatrix}
+\begin{bmatrix}
+z_1 \\
+z_2 \\
+\vdots \\
+z_{n-2}\\
+z_{n-1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+v_1 \\
+v_2 \\
+\vdots \\
+v_{n-2}\\
+v_{n-1}
+\end{bmatrix}
+\]
+\end{tcolorbox}
+
+Po obliczeniu wielkości $z_0, z_1, \ldots, z_n$ można znaleźć wartości funkcji
+sklejanej $S$ w dowolnym punkcie $x$. Najpierw należy ustalić, do którego
+z przedziałów
+\begin{equation*}
+(-\infty, x_1),
+~~~~~~ [ x_1, x_2),
+~~~~~~ \ldots,
+~~~~~~ [x_{n-2}, x_{n-1}),
+~~~~~~ [x_{n-1}, \infty)
+\end{equation*}
+$x$ należy. W tym celu badamy kolejno różnice
+\[
+x - x_{n-1}, \tab x - x_{n-2}, \tab \ldots, \tab x-x_1.
+\]
+Jeśli znajdziemy pierwszą z nich, np. $x - x_i$, która jest nieujemna, to
+$x \in [x_i, x_{i+1})$. Jeśli wszystkie liczby są ujemne to $x \in (-\infty, x_1)$
+i przyjmujemy $i = 0$. W ten sposób znajdujem wskaźnik właściwego wielomianu
+$S_i$ i obliczamy jego wartość $S_i(x)$.
+
+\begin{tcolorbox}
+\[
+S_i(x) = y_i + (x-x_i)\left(  C_i + (x-x_i) (B_i + (x-x_i) A_i ) \right)
+\]
+\end{tcolorbox}
+\begin{tcolorbox}
+\[
+A_i := \frac{1}{6h_i}(z_{i+1}-z_i)
+\]
+\[
+B_i := \frac{z_i}{2}
+\]
+\[
+C_i := -\frac{h_i}{6}(z_{i+1} + 2z_i) + \frac{1}{h_i} (y_{i+1} - y_i)
+\]
+\end{tcolorbox}
+
+
+\pagebreak
+\end{document}
