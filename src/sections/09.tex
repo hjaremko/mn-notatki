@@ -4,6 +4,44 @@
 
 \section{Funkcje sklejane}
 
+\subsection{Naturalna funkcja sklejana}
+\begin{tcolorbox}
+Funkcję $s: \mathbb{R} \rightarrow \mathbb{R}$ nazywamy \textbf{naturalną
+funkcją sklejaną} stopnia $2m + 1$ jeżeli
+\begin{itemize}
+    \item $s \in \Pi_{2m+1}$ w każdym z przedziałów $[x_i, x_{i+1}]$
+    \item $s \in \Pi_{m}$ w $(\infty, x_{0}]$ oraz $[x_n, \infty)$
+    \item $s \in \mathcal{C}^{2m}(\mathbb{R}$ czyli $s$ ma ciągłą $2m$-tą
+    pochodną na całym $\mathbb{R}$.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Naturalna funkcja sklejana stopnia $1$ jest funkcją ciągłą, kawałkami liniową,
+która w przedziałach $(\infty, x_{0}]$ oraz $[x_n, \infty)$ jest funkcją stałą.\\
+
+Naturalna funkcja sklejana stopnia $3$ w przedziałach
+$(\infty, x_{0}]$ oraz $[x_n, \infty)$ jest funkcją liniową i dlatego druga
+pochodna w punktach $x_0$ i $x_n$ zeruje się.
+Otrzymujemy dwa dodatkowe warunki
+\[
+s''_0 (x_0) = 0 \tab s''_{n-1}(x_n) = 0
+\]
+Dlatego naturalna funkcja stopnia $3$ jest określona jednoznacznie.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+\[
+\begin{cases}
+f_i(x_{i+1}) = f_{i+1}(x_{i+1}) = y_{i+1} ~~~~~~ \forall i\\
+f'_i(x_{i+1}) = f'_{i+1}(x_{i+1})  ~~~~~~ \forall i\\
+f''_i(x_{i+1}) = f''_{i+1}(x_{i+1}) ~~~~~~ \forall i\\
+f''_1(x_{1}) = f''_{n-1}(x_{n}) = 0 ~~~~~~ \Rightarrow \text{funkcja naturalna}\\
+\end{cases}
+\]
+
+\end{tcolorbox}
+
 \subsection{Naturalna funkcja sklejana stopnia trzeciego}
 \begin{tcolorbox}
 \[
