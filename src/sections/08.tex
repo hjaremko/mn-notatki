@@ -130,9 +130,31 @@ p_n(x) = \sum_{k=0}^{n} f[x_0,\ldots,x_k] \prod_{i=0}^{k-1} (x-x_i)
 \end{center}
 % {"nodes":[{"x":107,"y":174,"text":"f[x_0]","isAcceptState":false},{"x":252,"y":174,"text":"f[x_0,x_1]","isAcceptState":false},{"x":395,"y":174,"text":"f[x_0,x_1,x_2]","isAcceptState":false},{"x":549,"y":174,"text":"f[x_0,x_1,x_2,x_3]","isAcceptState":false},{"x":110,"y":285,"text":"f[x_1]","isAcceptState":false},{"x":110,"y":388,"text":"f[x_2]","isAcceptState":false},{"x":110,"y":497,"text":"f[x_3]","isAcceptState":false},{"x":252,"y":285,"text":"f[x_1,x_2]","isAcceptState":false},{"x":252,"y":388,"text":"f[x_2,x_3]","isAcceptState":false},{"x":395,"y":285,"text":"f[x_1,x_2,x_3]","isAcceptState":false},{"x":8,"y":174,"text":"x_0","isAcceptState":false},{"x":8,"y":285,"text":"x_1","isAcceptState":false},{"x":8,"y":388,"text":"x_2","isAcceptState":false},{"x":8,"y":497,"text":"x_3","isAcceptState":false}],"links":[{"type":"Link","nodeA":0,"nodeB":1,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":1,"nodeB":2,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":2,"nodeB":3,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":4,"nodeB":1,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":4,"nodeB":7,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":5,"nodeB":7,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":5,"nodeB":8,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":6,"nodeB":8,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":7,"nodeB":2,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":7,"nodeB":9,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":8,"nodeB":9,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0},{"type":"Link","nodeA":9,"nodeB":3,"text":"","lineAngleAdjust":0,"parallelPart":0.5,"perpendicularPart":0}]}
 
-\subsection{Zjawisko Runge'go}
+% \subsection{Zjawisko Runge'go}
+
 \subsection{Zbieżność wielomianów iterpolacyjnych}
+
 \subsection{Błąd inerpolacji wielomianowej}
+\begin{tcolorbox}
+Jeżeli $f i\in \mathcal{C}^{n+1}[a,b], p \in \Pi_n$ interpoluje $f$ w punktach
+$x_0, x_1, \ldots, x_n \in [a,b]$ to dla każdego $x \in [a,b]$ istnieje
+$\xi_x \in (a,b)$ takie, że
+\[
+f(x) - p(x) = \frac{f^{(n+1)}(\xi_x)}{(n+1)!} \prod_{i=0}^{n} (x-x_i)
+\]
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+
+Jaki jest błąd przybliżenia $f(x) = \sin(x)$ wielomianem interpolacyjnym
+stopnia $9$ w przedziale $[0,1]$?
+
+\[
+|\sin(x) - p_9(x)| \leqslant
+\left| \frac{\sin^{(10)}(\xi_x)}{10!} \prod_{j=0}^{9} (x-x_i) \right|
+\leqslant \frac{1}{10!} \approx 2.8 \cdot 10^{-7}
+\]
+
 \subsection{Interpolacja Hermite'a}
 \subsection{Uogólnienie ilorazów różnicowych}
 
