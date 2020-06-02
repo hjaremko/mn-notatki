@@ -6,6 +6,18 @@
 
 \subsection{Definicje}
 \begin{tcolorbox}
+Niech dane będą
+\begin{itemize}
+    \item $x_0 < x_1 < \ldots < x_n \in \mathbb{R}$ \textbf{(węzły interpolacji)}
+    \item $y_0 < y_1 < \ldots < y_n \in \mathbb{R}$ \textbf{(wartości)}
+    \item $\mathcal{F}$ ustalona klasa funkcji $f \in \mathcal{F} \rightarrow
+    \mathbb{R}$.
+\end{itemize}
+Problem wyznaczenia funkcji $f \in \mathcal{F}$ spełniającej warunki
+\[
+f(x_i) = y_i, \tab \text{dla } i = 0, 1, \ldots, n
+\]
+nazywamy \textbf{zadaniem interpolacji}.
 \end{tcolorbox}
 
 \subsection{Wzór interpolacyjny Newtona}
@@ -14,7 +26,7 @@
 p_n(x) = \sum_{k=0}^{n} a_k \prod_{j=0}^{k-1} (x-x_j)
 \]
 \[
-a_k = \frac{y_k = p_{k-1}(x_k)}{\prod_{j=0}^{k-1}(x_k - x_j)}
+a_k = \frac{y_k - p_{k-1}(x_k)}{\prod_{j=0}^{k-1}(x_k - x_j)}
 \]
 \end{tcolorbox}
 
