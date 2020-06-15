@@ -1,0 +1,209 @@
+\documentclass[../mn-notatki.tex]{subfiles}
+
+\begin{document}
+
+\section{Aproksymacja}
+
+% Daną funckję $f$ \textit{(znaną lub określoną tablicą wartości)}
+% aproksymujemy funkcją $g$ z pewnej ustalonej podprzestrzeni $G$ tak, aby
+% zminimalizować $||f-g||$.
+
+\subsection{Aproksymacja jednostajna}
+
+\begin{tcolorbox}
+\[
+||f-g|| = \sup_{x \in [a,b]} |f(x) - g(x)|
+\]
+\end{tcolorbox}
+
+\subsection{Metoda najmniejszych kwadratów}
+
+\begin{tcolorbox}
+Jest używana, gdy wartości znane są tylko w wybranych punktach $x_i$.
+Wtedy minimalizujemy względem pseudonormy
+dla $i = 1, \ldots, N$.
+\[
+||f-g|| = \sum_{i=0}^{N} w(x_i)\left(f(x_i) - g(x_i)\right)^2, \tab w(x_i) \geqslant 0
+\]
+\end{tcolorbox}
+
+\subsection{Aproksymacja średniokwadratowa}
+
+\begin{tcolorbox}
+\[
+||f-g|| = \int_a^b w(x)\left(f(x) - g(x)\right)^2 \dif x
+\]
+Gdzie $w$ jest ciągłą, nieujemną funkcją wagową, dodatnią poza zbiorem miary zero.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Ciąg $\{ p_n \}$ wielomianów ortogonalnych standardowych w przedziale
+$[a, b]$ z wagą $w$ można wyznaczyć ze wzorów
+\[
+p_0(x) = 1
+, \tab
+p_1(x) = x - a_1
+\]
+\[
+p_n(x) = (x-a_n)p_{n-1}(x) - b_n p_{n-2}(x) \tab (n \geqslant 2)
+\]
+gdzie dla iloczynu sklarnego $\langle f, g \rangle := \int_a^b f(x)g(x)w(x) \dif x$
+jest
+\[
+a_n := \frac{\langle xp_{n-1}, p_{n-1} \rangle}{\langle p_{n-1}, p_{n-1} \rangle},
+\tab b_n := \frac{\langle xp_{n-1}, p_{n-2} \rangle}{\langle xp_{n-2}, p_{n-2} \rangle}
+\]
+\end{tcolorbox}
+
+\pagebreak
+
+Dane funkcje bazowe \textit{(liniowo niezależne)}
+$\phi_0, \phi_1, \ldots, \phi_m$. W przypadku bazy wielomianowej mogą to być
+$1, x, x^2, \ldots, x^m$. Załóżmy, że mamy dane pewnie punkty
+\[
+\left\{ (x_0, y_0), (x_1, y_1), \ldots, (x_n, y_n) \right\}
+\]
+
+Ogólne zadanie aproksymacji polega na znalezieniu funkcji
+\[
+S(x) = a_0 \phi_0 + a_1 \phi_1 + \ldots + a_m \phi_m
+\]
+minimalizującej pewnie wyrażenie.
+
+\begin{tcolorbox}
+\[
+\begin{bmatrix}
+g_{00} & \ldots & g_{0m}\\
+\vdots & \ddots & \vdots\\
+g_{m0} & \ldots & g_{mm}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+a_0\\
+\vdots \\
+a_m
+\end{bmatrix}
+=
+\begin{bmatrix}
+\rho_0\\
+\vdots \\
+\rho_m
+\end{bmatrix}
+\]
+
+\[
+g_{ik} = \sum_{j=0}^n \phi_i(x_j)\phi_k(x_j)
+\]
+\[
+\rho_i = \sum_{j=0}^{n} \phi_i (x_j) y_j
+\]
+\end{tcolorbox}
+
+\subsubsection{Przykład}
+Wyznacz funkcję liniową aproksymującą punkty $(1,1), (2, 2.5), (3, 3.5), (4,4)$.\\
+Używamy bazy $\phi_0(x) = 1, \phi_1(x) = x$.
+\begin{align*}
+g_{00} &=  \left(  \phi_0(1) \right)^2 + \left(  \phi_0(2) \right)^2
++ \left(  \phi_0(3) \right)^2 + \left(  \phi_0(4) \right)^2\\
+&= 1^2 + 1^2 + 1^2 + 1^2 = 4 \\
+g_{01} &= \phi_0(1)\phi_1(1) + \phi_0(2)\phi_1(2)
++ \phi_0(3)\phi_1(3) + \phi_0(4)\phi_1(4)\\ &= 1 + 2 +3 +4 = 10%\\
+% \ldots
+\end{align*}
+\begin{align*}
+\rho_{0} &=  \phi_0(1)y_0 + \phi_0(2)y_1 + \phi_0(3)y_2 + \phi_0(4)y_3\\
+&= 1 \cdot 1 + 1 \cdot 2.5 + 1 \cdot 3.5 + 1 \cdot 4 = 11 \\
+\rho_{1} &=  \phi_1(1)y_0 + \phi_1(2)y_1 + \phi_1(3)y_2 + \phi_1(4)y_3\\
+&= 1 \cdot 1 + 2 \cdot 2.5 + 3 \cdot 3.5 + 4 \cdot 4 = 32.5
+\end{align*}
+\[
+S(x) = a_0\phi_0(x) + a_1\phi_1(x) = 0.25 + x
+\]
+
+
+\subsection{Aproksymacja trygonometryczna}
+
+Jeżeli odległość pomiędzy węzłami aproksymacji jest
+zawsze taka sama oraz aproksymowana funkcja jest okresowa, to można
+użyć ortogonalnego układu funkcji trygonometrycznych. Wtedy macierz
+układu $G \cdot A = \mathrm{P}$ jest diagonalna i układ ten można bardzo szybko
+rozwiązać.\\
+
+\begin{tcolorbox}
+Ustalmy pewną liczbę naturalną $L > 0$. Zakładamy chwilowo, że aproksymujemy
+funkcję na przedziale $[0, 2\pi]$, a liczba węzłów to $2L$.
+\[
+x_i = \frac{i\pi}{L}, \tab \text{dla}~~ i = 0, 1, \ldots, 2L - 1
+\]
+Aproksymacja funkcjami trygonometrycznymi polega na przybliżeniu
+\[
+f(x) \approx \frac{a_0}{2} + \sum_{i=1}^{K}\left(
+a_i \cos(i \cdot x) + b_i \sin(i \cdot x)
+\right)
+\]
+przy czym zakłada się, że $2K + 1 \leqslant 2L$.
+\[
+a_j = \frac{1}{L} \sum_{i=0}^{2L-1} y_i \cos(j \cdot x_i)
+= \frac{1}{L} \sum_{i=0}^{2L-1} y_i \cos \frac{\pi i j}{L}
+,\tab \text{dla} ~~j = 0, 1, \ldots, K
+\]
+\[
+b_j = \frac{1}{L} \sum_{i=0}^{2L-1} y_i \sin(j \cdot x_i)
+= \frac{1}{L} \sum_{i=0}^{2L-1} y_i \sin \frac{\pi i j}{L}
+,\tab \text{dla} ~~j = 1, 2, \ldots, K
+\]
+\end{tcolorbox}
+
+\pagebreak
+
+\subsubsection{Przykład}
+Wyznacz aproksymację trygonometryczną dla punktów
+$
+\left(  0, 3 \right)
+$,
+$
+\left(  \frac{\pi}{3},  2 \right)
+$,
+$
+\left(  \frac{2\pi}{3}, 3 \right)
+$,
+$
+\left(  \pi, 1 \right)
+$,
+$
+\left(  \frac{4\pi}{1}, 1 \right)
+$,
+$
+\left(  \frac{5\pi}{3}, 2 \right)
+$.
+Mamy $2L = 6$ stąd $2K + 1 \leqslant 6$, czyli $L = 3$, $K = 2$. Zgodnie ze
+wzorami wyznaczamy współczynniki.
+\begin{align*}
+a_0 &= \frac{1}{L} \sum_{i=0}^{2L-1} y_i \cos(0 \cdot x_i)
+= \frac{1}{3} \sum_{i=0}^{5}y_i \cdot 1
+= \frac{12}{3} = 4\\
+a_1 &= \frac{1}{3} \left(
+3\cos 0 + 2 \cos \frac{\pi}{3} + 3 \cos \frac{2\pi}{3} + \cos \pi
++ \cos \frac{4\pi}{3} + 2 \cos \frac{5\pi}{3}
+\right) = \frac{2}{3}\\
+a_2 &= \frac{1}{3} \left(
+3\cos 0 + 2 \cos \frac{2\pi}{3} + 3 \cos \frac{4\pi}{3} + \cos 2\pi
++ \cos \frac{8\pi}{3} + 2 \cos \frac{10\pi}{3}
+\right) = 0\\
+b_1 &= \frac{1}{3} \left(
+3\sin 0 + 2 \sin \frac{\pi}{3} + 3 \sin \frac{2\pi}{3} + \sin \pi
++ \sin \frac{4\pi}{3} + 2 \sin \frac{5\pi}{3}
+\right) = \frac{\sqrt{3}}{3}\\
+b_2 &= \frac{1}{3} \left(
+3\sin 0 + 2 \sin \frac{2\pi}{3} + 3 \sin \frac{4\pi}{3} + \sin 2\pi
++ \sin \frac{8\pi}{3} + 2 \sin \frac{10\pi}{3}
+\right) = -\frac{\sqrt{3}}{3}\\
+\end{align*}
+Ostatecznie otrzymujemy przybliżenie
+\[
+f(x) = \frac{4}{2} + \frac{2}{3} \cos x + \frac{\sqrt{3}}{3} \sin x
+- \frac{\sqrt{3}}{3} \sin 2x
+\]
+
+\pagebreak
+\end{document}
