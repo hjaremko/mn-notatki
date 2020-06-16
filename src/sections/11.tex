@@ -4,5 +4,227 @@
 
 \section{Różniczkowanie i całkowanie numeryczne}
 
+Aby obliczyć $\int_a^b f(x) \dif x$
+\begin{enumerate}
+    \item Aproksymujemy funkcję $f$ np. wielomianem, funkcją sklejaną.
+    \item Całkujemy aproksymację.
+\end{enumerate}
+
+\subsection{Kwadratura}
+
+\begin{tcolorbox}
+Załóżmy, że ustalony jest podział przedziału $[a,b]$
+\[
+a \leqslant x_0 < x_1 < x_2 < \ldots < x_N \leqslant b
+\]
+Wyrażenie postaci
+\[
+S(f) = \sum_{k=0}^{N} A_k f(x_k)
+\]
+nazywamy \textbf{kwadraturą} jeżeli współczynniki $A_k$ nie zależą od funkcji
+podcałkowej $f: [a,b] \rightarrow \mathbb{R}$, a jedynie od punktów podziału
+$x_0, \ldots, x_N$.\\
+Argumenty $x_k$ nazywamy \textbf{węzłami kwadratury}.
+\end{tcolorbox}
+
+\subsection{Kwadratury interpolacyjne}
+
+\begin{tcolorbox}
+\[
+p(x) = \sum_{k=0}^n f(x_k)\Phi_k(x) \tab \Phi_k(x) = \prod_{j \neq k}
+\frac{x - x_j}{x_k - x_j}
+\]
+\[
+A_k = \int_a^b \Phi_k(x) \dif x
+\]
+\end{tcolorbox}
+
+
+% TODO
+% \subsubsection{Błąd kwadratury interpolacyjnej}
+
+\pagebreak
+\subsection{Kwadratury Newtona-Cotesa}
+Gdy węzły są równo odległe, to znaczy
+\[
+x_k = a + kh \tab h = \frac{b-a}{n}
+\]
+kwadraturę na nich opartną nazywamy \textbf{kwadraturą Newtona-Cotesa}.
+
+
+\subsubsection{Metoda trapezów}
+Funkcję interpolujemy funkcją liniową na przedziale $[a,b]$.
+\[
+x_0 = a \tab x_1 = b
+\]
+\[
+\Phi_0(x) = \frac{x-b}{a-b}
+\tab
+\Phi_1(x) = \frac{x-a}{a-a}
+\]
+\[
+A_0 = \int_a^b \Phi_0(x) \dif x = \frac{1}{2}(b - a)
+\tab
+A_1 = \int_a^b \Phi_1(x) \dif x = \frac{1}{2}(b - a)
+\]
+
+\begin{tcolorbox}
+\[
+\int_a^b f(x) \dif x \approx \frac{1}{2}\left(
+b - a
+\right) \left(
+f(a) + f(b)
+\right)
+\]
+\end{tcolorbox}
+
+\subsubsection{Złożona metoda trapezów}
+
+Dzielimy przedział $[a,b]$ na $N$ podprzedziałów
+$a = x_0 < x_1 < x_2 < \ldots < x_N = b$ o \textbf{tej samej długości}
+$h = \frac{b-a}{N}$ i w każdym z nich stosujemy metodę trapezów.
+
+\begin{tcolorbox}
+\[
+\int_a^b f(x) \dif x
+\approx S(f)
+= h \left(
+\frac{1}{2}f(x_0)
++ \sum_{i=1}^{N-1} f(x_i)
++ \frac{1}{2} f(x_N)
+\right)
+\]
+\end{tcolorbox}
+
+\subsubsection{Wzór Simpsona \textit{(parabol)}}
+
+\begin{tcolorbox}
+\[
+S(f) = \frac{b-a}{6} \left(
+f(a) + 4f \left(
+\frac{a+b}{2}
+\right)
++ f(b)
+\right)
+\]
+\end{tcolorbox}
+
+\subsubsection{Złożony wzór Simpsona}
+Powstaje przez zastosowanie wzoru Simpsona  do $n$ podprzedziałów jednakowej
+długości.
+\begin{tcolorbox}
+\[
+x_i = a + ih ~~~~(0 \leqslant i \leqslant 2n)
+, \tab
+h := \frac{b-a}{2n}
+\]
+\[
+S(f) =
+\frac{1}{3} h \left(
+f(x_0)
++ 4 \sum_{i=1}^n f(x_{2i-1})
++ 2 \sum_{i=1}^{n-1} f(x_{2i})
++ f(x_{2n})
+\right)
+\]
+\end{tcolorbox}
+
+\subsubsection{Wzór \textit{trzech ósmych}}
+
+Punkty podziału przedziału całkowania
+$[a,b]$,
+na $n$ równych części w tym przypadku
+oznaczamy przez $x_0, x_3, x_6, \ldots, x_{3n-3}, x_{3n}$.
+Wobec tego podprzedziały będą postaci
+$[x_0, x_3], [x_3, x_6], \ldots, [x_{3n-3}, x_{3n}]$.
+Wówczas potrzebne w metodzie $\frac{3}{8}$ Newtona węzły obliczymy jako
+$x_0 = a$ oraz $x_i = a + ih$, dla $1, 2, \ldots, 3n$, gdzie
+$h = \frac{b-a}{3n}$.
+
+\begin{tcolorbox}
+\[
+S(f) = \frac{3h}{8}
+\left(
+y_0
++ 3 \sum_{k=1}^n (y_{3k-2} + y_{3k-1})
++ 2 \sum_{k=1}^{n-1} (y_{3k} + y_{3n})
+\right)
+\]
+\end{tcolorbox}
+
+
+\subsection{Rząd kwadratury}
+
+\begin{tcolorbox}
+Mówimy, że kwadratura jest \textbf{rzędu $r$}, jeżeli
+\begin{itemize}
+    \item kwadratura jest zgodna dla wszystkich wielomianów o stopniu mniejszym
+    niż $r$, czyli wartość policzonej całki za pomocą kwadratury zgadza się
+    z dokładną całką takiego wielomianu,
+    \item istnieje wielomina stopnia dokładnie $r$, dla którego kwadratura nie
+    jest zgodna.
+\end{itemize}
+\end{tcolorbox}
+
+Kwadratury Newtona-Cotesa mają rząd
+\begin{itemize}
+    \item $N+1$ dla $N$ niepatrzystych
+    \item $N+2$ dla $N$ parzystych
+\end{itemize}
+lub ogólnie $2 \floor{\frac{N}{2}} + 2$, gdzie $\floor{a}$ oznacza cechę liczby
+$a$.
+
+\subsection{Kwadratury Gaussa-Legendre'a}
+
+\begin{tcolorbox}
+Dla $N+1$ węzłów istnieje dokładnie jedna kwadratura rzędu $2(N+1)$.
+Nazywana jest \textbf{kwadraturą Gaussa-Legendre'a}.
+\end{tcolorbox}
+
+Dla przedziału $[-1,1]$ węzłami tej kwadratury są miejsca zerowe
+\textbf{ortogonalych wielomianów Legendre'a} zdefiniowanych następująco
+\[
+P_n(x) = \frac{1}{2^n n!} \left((x^2-1)^n\right)^n
+\]
+Współczynniki tej kwadratury wyrażają się następująco
+\[
+A_k = \frac{-2}{(N+2)P_{N+2}(x_k)P'_{N+1}(x_k)}
+\]
+gdzie $x_0, \ldots, x_n$ są miejscami zerowymi wielomianu $P_{N+1}$.
+
+Wyznaczymy wielomiany Legendre'a i węzły dla małych wartości $N$. Mamy
+\begin{align*}
+&P_1(x) = \frac{1}{2^1 1!} \left( x^2 - 1 \right)' = x \\
+&P_2(x) = \frac{1}{2^2 2!} \left( (x^2 - 1)^2 \right)'' = \frac{1}{2}\left(3x^2 -1 \right)\\
+&P_3(x) = \frac{1}{2^3 3!} \left( (x^2 - 1)^3 \right)''' = \frac{1}{2}\left(5x^2 -3 \right)\\
+&P_4(x) = \frac{1}{2^4 4!} \left( (x^2 - 1)^4 \right)'''' = \frac{1}{8}\left(35x^4 -30x^2 + 3 \right)
+\end{align*}
+Zgodnie z podaną procedurą, węzły dla ustalonego $N$ to pierwiaski wielomianu
+$P_{N+1}$. Stąd np. dla $N=2$ węzłami będą miejsca zerowe $P_3$, czyli
+$\left\{ 0, \pm \sqrt{\frac{3}{5}} \right\}$. Wartości współczyników to
+\[
+A_k = \frac{-2}{(2+2)P_{2+2}(x_k)P'_{2+1}(x_k)}
+\]
+czyli
+\[
+A_0 = A_2 = \frac{5}{9}, \tab A_1 = \frac{8}{9}
+\]
+
+Węzły i współczynniki dotyczą całek na przedziale $[-1,1]$. Można je wykorzystać
+do obliczania całem na dowolnym przedziale stosując proste podstawienie
+liniowe
+\[
+\int_a^b f(t) \dif t = \frac{b-a}{2} \int_{-1}^1 g(x) \dif x
+\]
+\[
+t = \frac{a+b}{2} + \frac{b-a}{2}x
+\]
+\[
+g(x) = f(t) = f \left(\frac{a+b}{2} + \frac{b-a}{2}x \right)
+\]
+
+% TODO
+% \subsection{Metody Monte Carlo}
+
 \pagebreak
 \end{document}
